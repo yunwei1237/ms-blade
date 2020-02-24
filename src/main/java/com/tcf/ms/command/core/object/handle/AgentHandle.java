@@ -6,9 +6,13 @@ import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.object.Troop;
 
 public class AgentHandle implements CanVariable {
+
     private StringVariable variable;
 
-    @Override
+    public Variable getVar() {
+        return this.variable;
+    }
+
     public void setVar(StringVariable variable) {
         this.variable = variable;
     }
@@ -19,10 +23,5 @@ public class AgentHandle implements CanVariable {
 
     public AgentHandle(Troop troop) {
         this.variable = troop.getVar();
-    }
-
-    @Override
-    public Variable getVar() {
-        return this.variable;
     }
 }

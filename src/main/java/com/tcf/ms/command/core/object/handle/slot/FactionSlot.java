@@ -8,6 +8,8 @@ import com.tcf.ms.command.core.command.ScriptSpan;
 import com.tcf.ms.command.core.object.Faction;
 import com.tcf.ms.command.core.operation.FactionGetSlot;
 import com.tcf.ms.command.core.operation.FactionSetSlot;
+import com.tcf.ms.command.core.operation.FactionSlotEq;
+import com.tcf.ms.command.core.operation.FactionSlotGe;
 
 public class FactionSlot extends AbstractSlotOperation {
     private Faction faction;
@@ -18,43 +20,22 @@ public class FactionSlot extends AbstractSlotOperation {
     }
 
     @Override
-    public <T> T get(String slotName, Class< T extends CanVariable> clazz) {
-        Slot slot = this.checkAndGetSlot(slotName);
-        //获得值
-        StringVariable variable = Variable.local("faction_var");
-        //阵营
-        Variable factionId = faction.getVar();
-        //slot名称
-        Variable slotNameVar = Variable.constant(slotName);
-        this.scriptSpan.out(new FactionGetSlot(variable,factionId,slotNameVar));
-
-        CanVariable canVariable = null;
-        try {
-            canVariable = (CanVariable) clazz.newInstance();
-            canVariable.setVar(variable);
-            return (T)slot.getSlotObj();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public <T> T get(String slotName, Class< ? extends CanVariable> clazz) {
+        return getAny(slotName,faction,new FactionGetSlot(getObjVar(slotName),faction.getVar(),Variable.constant(slotName)),clazz);
     }
 
     @Override
     public void set(String slotName, CanVariable value) {
-        this.checkAndGetSlot(slotName);
-        this.setSlot(slotName,value);
-        scriptSpan.out(new FactionSetSlot(faction.getVar(),Variable.constant(slotName),value.getVar()));
+        this.set(slotName,value,new FactionSetSlot(faction.getVar(),Variable.constant(slotName),value.getVar()));
     }
 
     @Override
     public Conditable eq(String slotName, CanVariable value) {
-        return null;
+        return new FactionSlotEq(faction.getVar(),Variable.constant(slotName),value.getVar());
     }
 
     @Override
     public Conditable ge(String slotName, CanVariable value) {
-        return null;
+        return new FactionSlotGe(faction.getVar(),Variable.constant(slotName),value.getVar());
     }
 }

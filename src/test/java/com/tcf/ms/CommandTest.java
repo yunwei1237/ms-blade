@@ -1,33 +1,27 @@
 package com.tcf.ms;
 
-import com.tcf.ms.command.core.base.var.ConstantVariable;
-import com.tcf.ms.command.core.base.var.GlobalVariable;
-import com.tcf.ms.command.core.base.var.LocalVariable;
 import com.tcf.ms.command.core.base.Position;
-import com.tcf.ms.command.core.base.var.NumberVariable;
 import com.tcf.ms.command.core.command.Script;
 import com.tcf.ms.command.core.object.*;
-import com.tcf.ms.command.core.operations.condition.Ge;
-import com.tcf.ms.command.core.operations.control.TryForRange;
 import org.junit.Test;
 
 public class CommandTest {
 
-    @Test
-    public void testGe(){
-        System.out.println(new Ge(new NumberVariable(18),new NumberVariable(22)).toScriptString());
-        System.out.println(new Ge(new LocalVariable("name"),new NumberVariable(22)).toScriptString());
-        System.out.println(new Ge(new LocalVariable("name"),new GlobalVariable("local")).toScriptString());
-        System.out.println(new Ge(new LocalVariable("name"),new ConstantVariable("local")).toScriptString());
-    }
-
-    @Test
-    public void testTryForRange(){
-        System.out.println(new TryForRange(new NumberVariable(18),new NumberVariable(0),new NumberVariable(22)).toScriptString());
-        System.out.println(new TryForRange(new LocalVariable("name"),new NumberVariable(0),new NumberVariable(22)).toScriptString());
-        System.out.println(new TryForRange(new LocalVariable("name"),new NumberVariable(0),new GlobalVariable("local")).toScriptString());
-        System.out.println(new TryForRange(new LocalVariable("name"),new NumberVariable(0),new ConstantVariable("local")).toScriptString());
-    }
+//    @Test
+//    public void testGe(){
+//        System.out.println(new Ge(new NumberVariable(18),new NumberVariable(22)).toScriptString());
+//        System.out.println(new Ge(new LocalVariable("name"),new NumberVariable(22)).toScriptString());
+//        System.out.println(new Ge(new LocalVariable("name"),new GlobalVariable("local")).toScriptString());
+//        System.out.println(new Ge(new LocalVariable("name"),new ConstantVariable("local")).toScriptString());
+//    }
+//
+//    @Test
+//    public void testTryForRange(){
+//        System.out.println(new TryForRange(new NumberVariable(18),new NumberVariable(0),new NumberVariable(22)).toScriptString());
+//        System.out.println(new TryForRange(new LocalVariable("name"),new NumberVariable(0),new NumberVariable(22)).toScriptString());
+//        System.out.println(new TryForRange(new LocalVariable("name"),new NumberVariable(0),new GlobalVariable("local")).toScriptString());
+//        System.out.println(new TryForRange(new LocalVariable("name"),new NumberVariable(0),new ConstantVariable("local")).toScriptString());
+//    }
 
 
     @Test

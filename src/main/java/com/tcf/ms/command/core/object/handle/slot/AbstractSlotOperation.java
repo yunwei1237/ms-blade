@@ -1,9 +1,15 @@
 package com.tcf.ms.command.core.object.handle.slot;
 
+import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.CanVariable;
+import com.tcf.ms.command.core.Conditable;
 import com.tcf.ms.command.core.base.BladeException;
+import com.tcf.ms.command.core.base.var.StringVariable;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.command.ScriptSpan;
+import com.tcf.ms.command.core.operation.FactionGetSlot;
+import com.tcf.ms.command.core.operation.FactionSetSlot;
+import com.tcf.ms.command.core.operation.FactionSlotEq;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -40,6 +46,10 @@ public abstract class AbstractSlotOperation implements SlotOperation {
         this.slots.put(slotName,slot);
     }
 
+    protected StringVariable getObjVar(String slotName){
+        return Variable.local(String.format("slot_val_%s",slotName));
+    }
+
     /**
      * slot最大个数的限制
      */
@@ -66,6 +76,27 @@ public abstract class AbstractSlotOperation implements SlotOperation {
             throw new BladeException(String.format("名字为%s的slot还没有被创建，请先创建该slot", slotName));
         }
         return slot;
+    }
+
+    protected <T> T getAny(String slotName, CanVariable obj, Operation operation, Class< ? extends CanVariable> clazz) {
+        Slot slot = this.checkAndGetSlot(slotName);
+        this.scriptSpan.out(operation);
+        CanVariable canVariable;
+        try {
+            canVariable = clazz.newInstance();
+            canVariable.setVar(getObjVar(slotName));
+            return (T)slot.getSlotObj();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    protected void set(String slotName, CanVariable value,Operation operation) {
+        this.setSlot(slotName,value);
+        scriptSpan.out(operation);
     }
 
     /**

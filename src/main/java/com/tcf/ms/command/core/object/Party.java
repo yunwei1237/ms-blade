@@ -2,6 +2,7 @@ package com.tcf.ms.command.core.object;
 
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.CanVariable;
+import com.tcf.ms.command.core.base.BladeException;
 import com.tcf.ms.command.core.base.Position;
 import com.tcf.ms.command.core.base.var.StringVariable;
 import com.tcf.ms.command.core.base.var.Variable;
@@ -125,6 +126,11 @@ public class Party implements Operation, CanVariable {
     @Override
     public StringVariable getVar() {
         return Variable.constant(String.format("p_%s",this.partyId));
+    }
+
+    @Override
+    public void setVar(StringVariable variable) {
+        throw new BladeException("数据对象无法设置变量");
     }
 
 

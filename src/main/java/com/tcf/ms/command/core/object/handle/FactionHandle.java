@@ -8,12 +8,10 @@ public class FactionHandle implements CanVariable {
 
     private StringVariable variable;
 
-    @Override
     public Variable getVar() {
         return this.variable;
     }
 
-    @Override
     public void setVar(StringVariable variable) {
         this.variable = variable;
     }

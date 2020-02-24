@@ -2,6 +2,7 @@ package com.tcf.ms.command.core.object;
 
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.CanVariable;
+import com.tcf.ms.command.core.base.BladeException;
 import com.tcf.ms.command.core.base.var.StringVariable;
 import com.tcf.ms.command.core.base.var.Variable;
 import lombok.Data;
@@ -30,6 +31,7 @@ import java.util.stream.Collectors;
 @Accessors(chain = true)
 @NoArgsConstructor
 public class Faction implements Operation, CanVariable {
+
     /**
      * 阵营id
      */
@@ -85,6 +87,11 @@ public class Faction implements Operation, CanVariable {
     @Override
     public StringVariable getVar() {
         return Variable.constant(String.format("fac_%s",this.factionId));
+    }
+
+    @Override
+    public void setVar(StringVariable variable) {
+        throw new BladeException("数据对象无法设置变量");
     }
 
     @Data

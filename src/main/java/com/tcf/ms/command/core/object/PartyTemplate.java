@@ -1,6 +1,10 @@
 package com.tcf.ms.command.core.object;
 
 
+import com.tcf.ms.command.core.CanVariable;
+import com.tcf.ms.command.core.base.BladeException;
+import com.tcf.ms.command.core.base.var.StringVariable;
+import com.tcf.ms.command.core.base.var.Variable;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -20,7 +24,7 @@ import lombok.experimental.Accessors;
 //#    7.4) Member flags(optional). Use pmf_is_prisoner to note that this member is a prisoner.
 //#     Note: There can be at most 6 stacks.
 //####################################################################################################################
-public class PartyTemplate {
+public class PartyTemplate implements CanVariable {
     /**
      * 模板id
      */
@@ -45,6 +49,16 @@ public class PartyTemplate {
     private Faction faction;
     private PartyHeader.Personality[] personalities;
     private PartyTemplateStack[] partyTemplateStacks;
+
+    @Override
+    public Variable getVar() {
+        return Variable.constant(String.format("pt_%s", this.partyTemplateId));
+    }
+
+    @Override
+    public void setVar(StringVariable variable) {
+        throw new BladeException("数据对象无法设置变量");
+    }
 
 
     @Data
