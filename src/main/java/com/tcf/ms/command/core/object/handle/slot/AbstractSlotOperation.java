@@ -1,9 +1,11 @@
 package com.tcf.ms.command.core.object.handle.slot;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.OperationWithResult;
 import com.tcf.ms.command.core.CanVariable;
 import com.tcf.ms.command.core.Conditable;
 import com.tcf.ms.command.core.base.BladeException;
+import com.tcf.ms.command.core.base.OperationResult;
 import com.tcf.ms.command.core.base.var.StringVariable;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.command.ScriptSpan;
@@ -24,18 +26,9 @@ import java.util.Map;
 public abstract class AbstractSlotOperation implements SlotOperation {
 
     /**
-     * 主脚本对象
-     */
-    protected ScriptSpan scriptSpan;
-
-    public AbstractSlotOperation(ScriptSpan scriptSpan) {
-        this.scriptSpan = scriptSpan;
-    }
-
-    /**
      * 记录所有的slotName和slot所对应的数据类型
      */
-    private Map<String, Slot> slots = new HashMap<>();
+    protected Map<String, Slot> slots = new HashMap<>();
 
     protected Slot getSlot(String slotName){
         return this.slots.get(slotName);
@@ -78,25 +71,14 @@ public abstract class AbstractSlotOperation implements SlotOperation {
         return slot;
     }
 
-    protected <T> T getAny(String slotName, CanVariable obj, Operation operation, Class< ? extends CanVariable> clazz) {
-        Slot slot = this.checkAndGetSlot(slotName);
-        this.scriptSpan.out(operation);
-        CanVariable canVariable;
-        try {
-            canVariable = clazz.newInstance();
-            canVariable.setVar(getObjVar(slotName));
-            return (T)slot.getSlotObj();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return null;
+    protected OperationWithResult getAny(String slotName, Operation operation) {
+        this.checkAndGetSlot(slotName);
+        return new OperationResult(getObjVar(slotName),operation);
     }
 
-    protected void set(String slotName, CanVariable value,Operation operation) {
+    protected Operation set(String slotName, CanVariable value,Operation operation) {
         this.setSlot(slotName,value);
-        scriptSpan.out(operation);
+        return operation;
     }
 
     /**

@@ -1,9 +1,10 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.Conditable;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ItemSlotGe implements Operation {
+public class ItemSlotGe implements Conditable {
 
     private Variable itemId;
     private Variable slotNo;

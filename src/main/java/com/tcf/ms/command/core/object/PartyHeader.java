@@ -1,6 +1,7 @@
 package com.tcf.ms.command.core.object;
 
 import com.tcf.ms.command.core.base.var.Variable;
+import lombok.Data;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -95,6 +96,14 @@ public class PartyHeader {
         AiBhvr(String name, String desc) {
             this.name = name;
             this.desc = desc;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getDesc() {
+            return desc;
         }
 
         public static AiBhvr[] list(){

@@ -1,6 +1,7 @@
 package com.tcf.ms.command.core.command;
 
 
+import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.Conditable;
 import com.tcf.ms.command.core.base.var.Variable;
 
@@ -10,7 +11,7 @@ import java.util.function.Supplier;
 /**
  * 条件相关的脚本
  */
-public interface ConditionOperation {
+public interface ConditionOperation extends Operation {
 
     /**
      * 相等

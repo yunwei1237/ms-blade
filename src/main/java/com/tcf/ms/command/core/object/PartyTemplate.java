@@ -51,7 +51,7 @@ public class PartyTemplate implements CanVariable {
     private PartyTemplateStack[] partyTemplateStacks;
 
     @Override
-    public Variable getVar() {
+    public StringVariable getVar() {
         return Variable.constant(String.format("pt_%s", this.partyTemplateId));
     }
 

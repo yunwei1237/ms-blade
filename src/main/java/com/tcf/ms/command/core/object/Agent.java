@@ -9,7 +9,7 @@ public class Agent implements CanVariable {
     private StringVariable variable;
 
     @Override
-    public Variable getVar() {
+    public StringVariable getVar() {
         return this.variable;
     }
 

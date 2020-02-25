@@ -2,15 +2,14 @@ package com.tcf.ms.command.core.command;
 
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.OperationWithResult;
 import com.tcf.ms.command.core.base.var.LocalVariable;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.object.handle.AgentHandle;
 import com.tcf.ms.command.core.object.handle.PartyHandle;
-import com.tcf.ms.command.core.operation.TryEnd;
-import com.tcf.ms.command.core.operation.TryForParties;
-import com.tcf.ms.command.core.operation.TryForRange;
-import com.tcf.ms.command.core.operation.TryForRangeBackwards;
+import com.tcf.ms.command.core.operation.*;
 
+import javax.swing.*;
 import java.util.function.Function;
 
 /**
@@ -105,7 +104,29 @@ public class ScriptSpan extends AbstractScript implements ExtendActionOperation{
 
     @Override
     public IfOperation If(ConditionOperation condition, ActionOperation action) {
-        return null;
+        appendOperation(new TryBegin());
+        appendOperation(condition);
+        appendOperation(action);
+        IfOperation operation = new IfOperationImpl();
+        appendOperation((Operation) operation);
+        appendOperation(new TryEnd());
+        return operation;
+    }
+
+    private static class IfOperationImpl extends AbstractScript implements IfOperation{
+        @Override
+        public IfOperation ElseIf(ConditionOperation condition, ActionOperation action) {
+            appendOperation(new ElseTry());
+            appendOperation(condition);
+            appendOperation(action);
+            return this;
+        }
+
+        @Override
+        public void Else(ActionOperation action) {
+            appendOperation(new ElseTry());
+            appendOperation(action);
+        }
     }
 
     @Override
@@ -211,7 +232,7 @@ public class ScriptSpan extends AbstractScript implements ExtendActionOperation{
     public void forParties(Function<PartyHandle, ActionOperation> function) {
         LocalVariable party = Variable.local("party");
         appendOperation(new TryForParties(party));
-        appendOperation(function.apply(new PartyHandle(party,this)));
+        appendOperation(function.apply(new PartyHandle(party)));
         appendOperation(new TryEnd());
     }
 
@@ -225,9 +246,25 @@ public class ScriptSpan extends AbstractScript implements ExtendActionOperation{
 
     /**
      * 外部添加操作
-     * @param operation
+     * @param operations
      */
-    public void out(Operation operation){
-        appendOperation(operation);
+    protected void out(Operation...operations){
+        appendOperations(operations);
     }
+
+    @Override
+    public OperationWithResult actionWithResult(OperationWithResult operation) {
+        out(operation);
+        return operation;
+    }
+
+    public void action(Operation operation){
+        out(operation);
+    }
+
+    @Override
+    public void actions(Operation... operations) {
+        out(operations);
+    }
+
 }

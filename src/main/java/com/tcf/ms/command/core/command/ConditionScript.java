@@ -411,6 +411,10 @@ public class ConditionScript extends AbstractScript implements ExtendConditionOp
     public Conditable between(Variable destination, Variable lowerBound, Variable upperBound) {
         return new IsBetween(destination,lowerBound,upperBound);
     }
+    //开始条件
+    public void condition(Conditable... conditables){
+        and(conditables);
+    }
 
     @Override
     public void and(Conditable... conditables) {

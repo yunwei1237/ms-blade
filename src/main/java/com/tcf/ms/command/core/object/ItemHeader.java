@@ -1,5 +1,7 @@
 package com.tcf.ms.command.core.object;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -67,6 +69,14 @@ public class ItemHeader {
             this.desc = desc;
         }
 
+        public String getName() {
+            return name;
+        }
+
+        public String getDesc() {
+            return desc;
+        }
+
         public static ItemFlag[] list(){
             return values();
         }
@@ -108,6 +118,14 @@ public class ItemHeader {
         ItemMetheFlag(String name, String desc) {
             this.name = name;
             this.desc = desc;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getDesc() {
+            return desc;
         }
 
         public static ItemMetheFlag[] list(){
@@ -233,7 +251,25 @@ public class ItemHeader {
         itcf_parry_right_polearm("itcf_parry_right_polearm","长杆格挡右方"),
         itcf_parry_left_polearm("itcf_parry_left_polearm","长杆格挡左方"),
 
-        itcf_force_64_bits("itcf_force_64_bits","强制64格"),
+        //itcf_force_64_bits("itcf_force_64_bits","强制64格"),
+
+        itc_cleaver("itc_cleaver","菜刀类"),
+        itc_dagger("itc_dagger","匕首类"),
+        itc_parry_onehanded("itc_parry_onehanded","可格挡的单手武器类"),
+        itc_longsword("itc_longsword","长剑类"),
+        itc_scimitar("itc_scimitar","弯刀类"),
+        itc_parry_two_handed("itc_parry_two_handed","可格挡的双手武器类"),
+        itc_cut_two_handed("itc_cut_two_handed","可砍的双手武器类"),
+        itc_greatsword("itc_greatsword","巨剑类"),
+        itc_nodachi("itc_nodachi","日本太刀类"),
+        itc_bastardsword("itc_bastardsword","护手剑类"),
+        itc_parry_polearm("itc_parry_polearm","可格挡的长杆武器类"),
+        itc_poleaxe("itc_poleaxe","长柄武器类"),
+        itc_staff("itc_staff","长柄斧类"),
+        itc_spear("itc_spear","长矛类"),
+        itc_cutting_spear("itc_cutting_spear","可劈的长矛类"),
+        itc_pike("itc_pike","冲刺类"),
+        itc_greatlance("itc_greatlance","冲刺类，与itc_pike作用相同"),
         ;
         private String name;
         private String desc;
@@ -241,6 +277,14 @@ public class ItemHeader {
         ItemCapability(String name, String desc) {
             this.name = name;
             this.desc = desc;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getDesc() {
+            return desc;
         }
 
         public static ItemCapability[] list(){
@@ -303,6 +347,14 @@ public class ItemHeader {
         ItemModifier(String name, String desc) {
             this.name = name;
             this.desc = desc;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getDesc() {
+            return desc;
         }
 
         public static ItemModifier[] list(){

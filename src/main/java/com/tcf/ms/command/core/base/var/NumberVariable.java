@@ -16,7 +16,7 @@ public class NumberVariable extends Variable {
     /**
      * 用于保存变量的字面量，不以与name同时存在
      */
-    private Integer number;
+    protected Integer number;
 
     public NumberVariable(int number) {
         this.number = number;

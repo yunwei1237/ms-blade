@@ -18,6 +18,10 @@ package com.tcf.ms.command.core.object;
 //####################################################################################################################
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.CanVariable;
+import com.tcf.ms.command.core.base.BladeException;
+import com.tcf.ms.command.core.base.var.StringVariable;
+import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.command.ScriptSpan;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,7 +35,7 @@ import java.util.stream.Collectors;
 
 @Data
 @Accessors(chain = true)
-public class Item implements Operation {
+public class Item implements Operation, CanVariable {
     /**
      * 物品id
      */
@@ -57,7 +61,7 @@ public class Item implements Operation {
     /**
      * 物品价格
      */
-    private float value;
+    private int value;
     /**
      * 物品特性
      */
@@ -74,7 +78,20 @@ public class Item implements Operation {
     @Override
     public String toScriptString() {
         //["no_item","INVALID ITEM", [("practice_sword",0)], itp_type_one_handed_wpn|itp_primary|itp_secondary, itc_longsword, 3,weight(1.5)|spd_rtng(103)|weapon_length(90)|swing_damage(16,blunt)|thrust_damage(10,blunt),imodbits_none],
-        return String.format(scriptSpan == null ? "[\"%s\",\"%s\", [%s], %s, %s, %s,%s,%s]," : "[\"%s\",\"%s\", [%s], %s, %s, %s,%s,%s,%s],",this.itemId,this.itemName,MesheItem.getValue(this.meshes),ItemHeader.ItemFlag.getValue(this.flags),ItemHeader.ItemCapability.getValue(this.capabilities),this.value,ItemStat.getValue(this.itemStats),this.modifier.name(),String.format("[%s]",scriptSpan.toScriptString()));
+        if(scriptSpan == null){
+            return String.format("[\"%s\",\"%s\", [%s], %s, %s, %s,%s,%s],",this.itemId,this.itemName,MesheItem.getValue(this.meshes),ItemHeader.ItemFlag.getValue(this.flags),ItemHeader.ItemCapability.getValue(this.capabilities),this.value,ItemStat.getValue(this.itemStats),this.modifier.getName());
+        }
+        return String.format("[\"%s\",\"%s\", [%s], %s, %s, %s,%s,%s,%s],",this.itemId,this.itemName,MesheItem.getValue(this.meshes),ItemHeader.ItemFlag.getValue(this.flags),ItemHeader.ItemCapability.getValue(this.capabilities),this.value,ItemStat.getValue(this.itemStats),this.modifier.getName(),String.format("[%s]",scriptSpan.toScriptString()));
+    }
+
+    @Override
+    public StringVariable getVar() {
+        return Variable.constant(String.format("itm_%s", this.itemId));
+    }
+
+    @Override
+    public void setVar(StringVariable variable) {
+        throw new BladeException("数据对象无法设置变量");
     }
 
     @Data
@@ -85,7 +102,7 @@ public class Item implements Operation {
         private ItemHeader.ItemMetheFlag flag;
 
         public static String getValue(MesheItem[] meshes){
-            return meshes == null || meshes.length == 0 ? "" : Arrays.stream(meshes).map(mesheItem -> String.format("(%s,%s)",mesheItem.meshName,mesheItem.flag.name())).collect(Collectors.joining(","));
+            return meshes == null || meshes.length == 0 ? "" : Arrays.stream(meshes).map(mesheItem -> String.format("(\"%s\",%s)",mesheItem.meshName,mesheItem.flag.getName())).collect(Collectors.joining(","));
         }
     }
     @Data
@@ -129,7 +146,7 @@ public class Item implements Operation {
             return new ItemStatHelper();
         }
 
-        public ItemStatHelper weight(int value){
+        public ItemStatHelper weight(double value){
             list.add(new Weight(value));
             return this;
         }
@@ -228,8 +245,15 @@ public class Item implements Operation {
      * 物品重量
      */
     public static class Weight extends ItemStat{
-        public Weight(int value) {
-            super("weight", value);
+        private double value;
+        public Weight(double value) {
+            super("weight", 0);
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("%s(%s)",this.getName(),this.value);
         }
     }
 

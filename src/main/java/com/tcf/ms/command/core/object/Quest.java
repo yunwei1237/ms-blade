@@ -37,7 +37,7 @@ public class Quest implements CanVariable {
     private String description;
 
     @Override
-    public Variable getVar() {
+    public StringVariable getVar() {
         return Variable.constant(String.format("qst_", this.questId));
     }
 

@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.ArrayUtil;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.OperationExecutable;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,9 +96,15 @@ public abstract class AbstractScript implements OperationExecutable {
         }
 
         for (int i = 0; i < operations.size() - 1; i++) {
-            buffer.append(operations.get(i).toScriptString()+"\n");
+            String line = operations.get(i).toScriptString();
+            if(StringUtils.isNotBlank(line)) {
+                buffer.append(line + "\n");
+            }
         }
-        buffer.append(operations.get(operations.size() - 1).toScriptString());
+        String lastLine = operations.get(operations.size() - 1).toScriptString();
+        if(StringUtils.isNotBlank(lastLine)) {
+            buffer.append(lastLine);
+        }
         return buffer.toString();
     }
 }

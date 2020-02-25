@@ -1,7 +1,11 @@
 package com.tcf.ms.command.core.object.handle.slot;
 
+import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.OperationWithResult;
 import com.tcf.ms.command.core.CanVariable;
 import com.tcf.ms.command.core.Conditable;
+import com.tcf.ms.command.core.base.Context;
+import com.tcf.ms.command.core.base.var.StringVariable;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.command.ScriptSpan;
 import com.tcf.ms.command.core.object.Agent;
@@ -9,30 +13,30 @@ import com.tcf.ms.command.core.object.Troop;
 import com.tcf.ms.command.core.operation.*;
 
 public class AgentSlot extends AbstractSlotOperation {
-    private Agent agent;
+    private StringVariable variable;
 
-    public AgentSlot(ScriptSpan scriptSpan, Agent agent) {
-        super(scriptSpan);
-        this.agent = agent;
+    public AgentSlot(StringVariable variable) {
+        this.variable = variable;
+        this.slots = Context.slots.get("agent");
     }
 
     @Override
-    public <T> T get(String slotName, Class< ? extends CanVariable> clazz) {
-        return getAny(slotName, agent,new AgentGetSlot(getObjVar(slotName), agent.getVar(),Variable.constant(slotName)),clazz);
+    public OperationWithResult get(String slotName) {
+        return getAny(slotName,new AgentGetSlot(getObjVar(slotName), this.variable,Variable.constant(slotName)));
     }
 
     @Override
-    public void set(String slotName, CanVariable value) {
-        this.set(slotName,value,new AgentSetSlot(agent.getVar(),Variable.constant(slotName),value.getVar()));
+    public Operation set(String slotName, CanVariable value) {
+        return this.set(slotName,value,new AgentSetSlot(this.variable,Variable.constant(slotName),value.getVar()));
     }
 
     @Override
     public Conditable eq(String slotName, CanVariable value) {
-        return new AgentSlotEq(agent.getVar(),Variable.constant(slotName),value.getVar());
+        return new AgentSlotEq(this.variable,Variable.constant(slotName),value.getVar());
     }
 
     @Override
     public Conditable ge(String slotName, CanVariable value) {
-        return new AgentSlotGe(agent.getVar(),Variable.constant(slotName),value.getVar());
+        return new AgentSlotGe(this.variable,Variable.constant(slotName),value.getVar());
     }
 }
