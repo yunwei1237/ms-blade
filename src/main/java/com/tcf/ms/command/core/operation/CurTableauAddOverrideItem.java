@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CurTableauAddOverrideItem implements Operation {
+/**
+ *   (cur_tableau_add_override_item, <item_kind_id>),
+ */
+public class CurTableauAddOverrideItem implements Operation{
 
     private Variable itemKindId;
 

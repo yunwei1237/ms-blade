@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class GetAverageGameDifficulty implements Operation {
+/**
+ *   (get_average_game_difficulty, <destination>),
+ */
+public class GetAverageGameDifficulty implements Operation{
 
     private Variable destination;
 

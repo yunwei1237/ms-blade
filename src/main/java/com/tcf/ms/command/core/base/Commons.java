@@ -27,4 +27,35 @@ public class Commons {
             return desc;
         }
     }
+
+    /**
+     * 升级兵种时选项
+     */
+    public enum UpgradePath{
+        random(0,"random","玩家"),
+        first(1,"first","第一个"),
+        second(2,"second","第二个")
+        ;
+        private int value;
+        private String name;
+        private String desc;
+
+        UpgradePath(int value, String name, String desc) {
+            this.value = value;
+            this.name = name;
+            this.desc = desc;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getDesc() {
+            return desc;
+        }
+    }
 }

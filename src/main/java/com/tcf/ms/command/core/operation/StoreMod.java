@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreMod implements Operation {
+/**
+ *  dest, op1, op2 :      dest = op1 % op2  (store_mod,<destination>,<value>,<value>),
+ */
+public class StoreMod implements Operation{
 
     private Variable destination;
     private Variable value;

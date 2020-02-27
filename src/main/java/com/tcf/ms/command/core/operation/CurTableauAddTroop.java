@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CurTableauAddTroop implements Operation {
+/**
+ *   (cur_tableau_add_troop, <troop_id>, <position_no>, <animation_id>, <instance_no>),  if instance_no value is 0 or less, then the face is not generated randomly (important for heroes)
+ */
+public class CurTableauAddTroop implements Operation{
 
     private Variable troopId;
     private Variable positionNo;

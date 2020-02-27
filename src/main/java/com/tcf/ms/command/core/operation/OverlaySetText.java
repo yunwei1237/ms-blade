@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class OverlaySetText implements Operation {
+/**
+ *   (overlay_set_text, <overlay_id>, <string_id>),
+ */
+public class OverlaySetText implements Operation{
 
     private Variable overlayId;
     private Variable stringId;

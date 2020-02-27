@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CreateProgressOverlay implements Operation {
+/**
+ *   (create_progress_overlay, <destination>, <min_value>, <max_value>),  returns overlay id
+ */
+public class CreateProgressOverlay implements Operation{
 
     private Variable destination;
     private Variable minValue;

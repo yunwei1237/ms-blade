@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class Store01RandomPartiesInRange implements Operation {
+/**
+ *   stores two random, different parties in a range to reg0 and reg1.  (store01_random_parties_in_range,<lower_bound>,<upper_bound>),
+ */
+public class Store01RandomPartiesInRange implements Operation{
 
     private Variable lowerBound;
     private Variable upperBound;

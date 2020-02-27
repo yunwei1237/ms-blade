@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class GetDistanceBetweenPositions implements Operation {
+/**
+ *   gets distance in centimeters.  (get_distance_between_positions,<destination>,<position_no_1>,<position_no_2>),
+ */
+public class GetDistanceBetweenPositions implements Operation{
 
     private Variable destination;
     private Variable positionNo1;

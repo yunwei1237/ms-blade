@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class CheckQuestFinished implements Operation ,Conditable{
+/**
+ *   (check_quest_finished,<quest_id>),
+ */
+public class CheckQuestFinished implements Conditable{
 
     private Variable questId;
 

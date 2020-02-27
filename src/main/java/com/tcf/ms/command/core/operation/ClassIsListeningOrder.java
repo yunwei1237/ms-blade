@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class ClassIsListeningOrder implements Operation ,Conditable{
+/**
+ *   (class_is_listening_order, <team_no>, <sub_class>),
+ */
+public class ClassIsListeningOrder implements Conditable{
 
     private Variable teamNo;
     private Variable subClass;

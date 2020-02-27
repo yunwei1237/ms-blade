@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class OverlaySetHilightColor implements Operation {
+/**
+ *   (overlay_set_hilight_color, <overlay_id>, <color>),  color in RGB format like 0xRRGGBB (put hexadecimal values for RR GG and BB parts)
+ */
+public class OverlaySetHilightColor implements Operation{
 
     private Variable overlayId;
     private Variable color;

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AgentGetWieldedItem implements Operation {
+/**
+ *   (agent_get_wielded_item,<destination>,<agent_id>,<hand_no>),
+ */
+public class AgentGetWieldedItem implements Operation{
 
     private Variable destination;
     private Variable agentId;

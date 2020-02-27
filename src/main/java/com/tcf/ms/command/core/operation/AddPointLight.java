@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AddPointLight implements Operation {
+/**
+ *   (add_point_light,[flicker_magnitude],[flicker_interval]),  flicker_magnitude between 0 and 100, flicker_interval is in 1/100 seconds
+ */
+public class AddPointLight implements Operation{
 
     private Variable flickerMagnitude;
     private Variable flickerInterval;

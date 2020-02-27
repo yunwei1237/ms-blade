@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyIgnorePlayer implements Operation {
+/**
+ *   (party_ignore_player, <party_id>,<duration_in_hours>),  don't pursue player party for this duration
+ */
+public class PartyIgnorePlayer implements Operation{
 
     private Variable partyId;
     private Variable durationInHours;

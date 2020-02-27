@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyClear implements Operation {
+/**
+ *   (party_clear,<party_id>),
+ */
+public class PartyClear implements Operation{
 
     private Variable partyId;
 

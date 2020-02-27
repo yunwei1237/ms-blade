@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class OverlaySetMeshRotation implements Operation {
+/**
+ *   (overlay_set_mesh_rotation, <overlay_id>, <position_no>),  position's rotation values are used for rotations around x, y and z axis
+ */
+public class OverlaySetMeshRotation implements Operation{
 
     private Variable overlayId;
     private Variable positionNo;

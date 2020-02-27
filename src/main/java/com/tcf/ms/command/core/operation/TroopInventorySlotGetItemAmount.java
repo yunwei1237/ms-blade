@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TroopInventorySlotGetItemAmount implements Operation {
+/**
+ *   (troop_inventory_slot_get_item_amount,<destination>,<troop_id>,<inventory_slot_no>),
+ */
+public class TroopInventorySlotGetItemAmount implements Operation{
 
     private Variable destination;
     private Variable troopId;

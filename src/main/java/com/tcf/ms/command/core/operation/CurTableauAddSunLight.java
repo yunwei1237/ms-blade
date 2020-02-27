@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CurTableauAddSunLight implements Operation {
+/**
+ *   (cur_tableau_add_sun_light, <map_icon_id>, <position_no>, <red_fixed_point>, <green_fixed_point>, <blue_fixed_point>),
+ */
+public class CurTableauAddSunLight implements Operation{
 
     private Variable mapIconId;
     private Variable positionNo;

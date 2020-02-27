@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CreateButtonOverlay implements Operation {
+/**
+ *   (create_button_overlay, <destination>, <string_id>),  returns overlay id
+ */
+public class CreateButtonOverlay implements Operation{
 
     private Variable destination;
     private Variable stringId;

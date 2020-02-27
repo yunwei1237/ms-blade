@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyPrisonerStackGetTroopDna implements Operation {
+/**
+ *   (party_prisoner_stack_get_troop_dna, <destination>,<party_id>,<stack_no>),
+ */
+public class PartyPrisonerStackGetTroopDna implements Operation{
 
     private Variable destination;
     private Variable partyId;

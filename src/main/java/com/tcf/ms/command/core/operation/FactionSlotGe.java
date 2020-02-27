@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class FactionSlotGe implements Operation ,Conditable{
+/**
+ *   (faction_slot_ge,<faction_id>,<slot_no>,<value>),
+ */
+public class FactionSlotGe implements Conditable{
 
     private Variable factionId;
     private Variable slotNo;

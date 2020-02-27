@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TroopAddMerchandise implements Operation {
+/**
+ *   (troop_add_merchandise,<troop_id>,<item_type_id>,<value>),
+ */
+public class TroopAddMerchandise implements Operation{
 
     private Variable troopId;
     private Variable itemTypeId;

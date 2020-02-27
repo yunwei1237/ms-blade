@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class GetPlayerAgentKillCount implements Operation {
+/**
+ *   (get_player_agent_kill_count,<destination>,[get_wounded]),  Set second value to non-zero to getGroup wounded count. returns lifetime kill counts
+ */
+public class GetPlayerAgentKillCount implements Operation{
 
     private Variable destination;
     private Variable getWounded;

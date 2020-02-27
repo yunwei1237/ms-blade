@@ -1,8 +1,12 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 
-public class EndCurrentBattle implements Operation {
+/**
+ *   (end_current_battle),
+ */
+public class EndCurrentBattle implements Operation{
 
     
 

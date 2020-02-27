@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartySetAiObject implements Operation {
+/**
+ *   (party_set_ai_object,<party_id>,<party_id>),
+ */
+public class PartySetAiObject implements Operation{
 
     private Variable partyId;
     private Variable partyId2;

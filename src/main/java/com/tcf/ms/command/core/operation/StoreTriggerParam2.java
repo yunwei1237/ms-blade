@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreTriggerParam2 implements Operation {
+/**
+ *   (store_trigger_param_2,<destination>),
+ */
+public class StoreTriggerParam2 implements Operation{
 
     private Variable destination;
 

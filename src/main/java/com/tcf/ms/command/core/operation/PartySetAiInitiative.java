@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartySetAiInitiative implements Operation {
+/**
+ *   (party_set_ai_initiative,<party_id>,<value>),  value is between 0-100
+ */
+public class PartySetAiInitiative implements Operation{
 
     private Variable partyId;
     private Variable value;

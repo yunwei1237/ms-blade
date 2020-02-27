@@ -1,8 +1,12 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetPartyBattleMode implements Operation {
+/**
+ *   (set_party_battle_mode),
+ */
+public class SetPartyBattleMode implements Operation{
 
     
 

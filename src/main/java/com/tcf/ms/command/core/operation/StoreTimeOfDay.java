@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreTimeOfDay implements Operation {
+/**
+ *   (store_time_of_day,<destination>),
+ */
+public class StoreTimeOfDay implements Operation{
 
     private Variable destination;
 

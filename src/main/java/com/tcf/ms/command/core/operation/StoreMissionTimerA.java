@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreMissionTimerA implements Operation {
+/**
+ *   (store_mission_timer_a,<destination>),
+ */
+public class StoreMissionTimerA implements Operation{
 
     private Variable destination;
 

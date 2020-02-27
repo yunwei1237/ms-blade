@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AddCompanionParty implements Operation {
+/**
+ *   (add_companion_party,<troop_id_hero>),
+ */
+public class AddCompanionParty implements Operation{
 
     private Variable troopIdHero;
 

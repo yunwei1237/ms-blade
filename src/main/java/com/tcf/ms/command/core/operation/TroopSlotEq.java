@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class TroopSlotEq implements Operation ,Conditable{
+/**
+ *   (troop_slot_eq,<troop_id>,<slot_no>,<value>),
+ */
+public class TroopSlotEq implements Conditable{
 
     private Variable troopId;
     private Variable slotNo;

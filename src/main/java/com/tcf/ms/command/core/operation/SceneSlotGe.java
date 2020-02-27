@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class SceneSlotGe implements Operation ,Conditable{
+/**
+ *   (scene_slot_ge,<scene_id>,<slot_no>,<value>),
+ */
+public class SceneSlotGe implements Conditable{
 
     private Variable sceneId;
     private Variable slotNo;

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CreateComboButtonOverlay implements Operation {
+/**
+ *   (create_combo_button_overlay, <destination>),  returns overlay id
+ */
+public class CreateComboButtonOverlay implements Operation{
 
     private Variable destination;
 

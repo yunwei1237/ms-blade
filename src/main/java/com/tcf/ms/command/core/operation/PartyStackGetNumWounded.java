@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyStackGetNumWounded implements Operation {
+/**
+ *   (party_stack_get_num_wounded,   <destination>,<party_id>,<stack_no>),
+ */
+public class PartyStackGetNumWounded implements Operation{
 
     private Variable destination;
     private Variable partyId;

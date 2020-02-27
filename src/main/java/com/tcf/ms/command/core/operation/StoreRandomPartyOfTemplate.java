@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreRandomPartyOfTemplate implements Operation {
+/**
+ *   fails if no party exists with tempolate_id (expensive)  (store_random_party_of_template,<destination>,<party_template_id>),
+ */
+public class StoreRandomPartyOfTemplate implements Operation{
 
     private Variable destination;
     private Variable partyTemplateId;

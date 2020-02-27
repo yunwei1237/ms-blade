@@ -1,9 +1,13 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class EncounteredPartyIsAttacker implements Operation ,Conditable{
+/**
+ *   (encountered_party_is_attacker),
+ */
+public class EncounteredPartyIsAttacker implements Conditable{
 
     
 

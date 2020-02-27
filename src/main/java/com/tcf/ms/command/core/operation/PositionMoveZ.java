@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PositionMoveZ implements Operation {
+/**
+ *   (position_move_z,<position_no>,<movement>,[value]),
+ */
+public class PositionMoveZ implements Operation{
 
     private Variable positionNo;
     private Variable movement;

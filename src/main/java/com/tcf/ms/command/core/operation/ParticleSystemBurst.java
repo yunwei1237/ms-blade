@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ParticleSystemBurst implements Operation {
+/**
+ *   (particle_system_burst,<par_sys_id>,<position_no>,[percentage_burst_strength]),
+ */
+public class ParticleSystemBurst implements Operation{
 
     private Variable parSysId;
     private Variable positionNo;

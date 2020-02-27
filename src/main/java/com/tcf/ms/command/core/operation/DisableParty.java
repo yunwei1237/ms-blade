@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class DisableParty implements Operation {
+/**
+ *   (disable_party,<party_id>),
+ */
+public class DisableParty implements Operation{
 
     private Variable partyId;
 

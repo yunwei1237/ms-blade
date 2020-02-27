@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ConvertFromFixedPoint implements Operation {
+/**
+ *   (convert_from_fixed_point, <destination>), divides the value with the fixed point multiplier
+ */
+public class ConvertFromFixedPoint implements Operation{
 
     private Variable destination;
 

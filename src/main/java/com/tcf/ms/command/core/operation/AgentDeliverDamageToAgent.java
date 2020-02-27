@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AgentDeliverDamageToAgent implements Operation {
+/**
+ *   (agent_deliver_damage_to_agent,<agent_id_deliverer>,<agent_id>),
+ */
+public class AgentDeliverDamageToAgent implements Operation{
 
     private Variable agentIdDeliverer;
     private Variable agentId;

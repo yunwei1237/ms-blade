@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ValMul implements Operation {
+/**
+ *  dest, operand ::       dest = dest * operand  (val_mul,<destination>,<value>),
+ */
+public class ValMul implements Operation{
 
     private Variable destination;
     private Variable value;

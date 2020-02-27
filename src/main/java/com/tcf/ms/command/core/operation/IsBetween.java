@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class IsBetween implements Operation ,Conditable{
+/**
+ *   (is_between,<value>,<lower_bound>,<upper_bound>),  greater than or equal to lower bound and less than upper bound
+ */
+public class IsBetween implements Conditable{
 
     private Variable value;
     private Variable lowerBound;

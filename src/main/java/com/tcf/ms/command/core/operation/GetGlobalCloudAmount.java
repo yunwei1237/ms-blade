@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class GetGlobalCloudAmount implements Operation {
+/**
+ *   (get_global_cloud_amount, <destination>),  returns a value between 0-100
+ */
+public class GetGlobalCloudAmount implements Operation{
 
     private Variable destination;
 

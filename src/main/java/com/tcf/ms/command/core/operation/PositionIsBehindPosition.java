@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class PositionIsBehindPosition implements Operation ,Conditable{
+/**
+ *   (position_is_behind_position,<position_no_1>,<position_no_2>),
+ */
+public class PositionIsBehindPosition implements Conditable{
 
     private Variable positionNo1;
     private Variable positionNo2;

@@ -1,17 +1,21 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 
-public class MissionCamGetAparture implements Operation {
+/**
+ *   (mission_cam_get_aparture, <destination>)
+ */
+public class MissionCamGetAparture implements Operation{
 
-    
+    private Variable destination;
 
-    public MissionCamGetAparture() {
-             
+    public MissionCamGetAparture(Variable destination) {
+        this.destination = destination;     
     }
 
     @Override
     public String toScriptString() {
-        return String.format("(mission_cam_get_aparture),");
+        return String.format("(mission_cam_get_aparture,%s),",destination);
     }
 }

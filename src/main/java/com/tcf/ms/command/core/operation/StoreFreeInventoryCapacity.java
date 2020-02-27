@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreFreeInventoryCapacity implements Operation {
+/**
+ *   (store_free_inventory_capacity,<destination>,[troop_id]),
+ */
+public class StoreFreeInventoryCapacity implements Operation{
 
     private Variable destination;
     private Variable troopId;

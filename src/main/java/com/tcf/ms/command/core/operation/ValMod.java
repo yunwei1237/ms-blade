@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ValMod implements Operation {
+/**
+ *  dest, operand ::       dest = dest mod operand  (val_mod,<destination>,<value>),
+ */
+public class ValMod implements Operation{
 
     private Variable destination;
     private Variable value;

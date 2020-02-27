@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyRelocateNearParty implements Operation {
+/**
+ *   (party_relocate_near_party,<party_id>,<target_party_id>,<value_spawn_radius>),
+ */
+public class PartyRelocateNearParty implements Operation{
 
     private Variable partyId;
     private Variable targetPartyId;

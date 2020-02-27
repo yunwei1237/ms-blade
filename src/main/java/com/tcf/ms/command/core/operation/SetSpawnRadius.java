@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetSpawnRadius implements Operation {
+/**
+ *   (set_spawn_radius,<value>),
+ */
+public class SetSpawnRadius implements Operation{
 
     private Variable value;
 

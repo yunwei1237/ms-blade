@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyGetAttachedPartyWithRank implements Operation {
+/**
+ *   (party_get_attached_party_with_rank, <destination>, <party_id>, <attached_party_no>),
+ */
+public class PartyGetAttachedPartyWithRank implements Operation{
 
     private Variable destination;
     private Variable partyId;

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class GetTriggerObjectPosition implements Operation {
+/**
+ *   (get_trigger_object_position,<position_no>),
+ */
+public class GetTriggerObjectPosition implements Operation{
 
     private Variable positionNo;
 

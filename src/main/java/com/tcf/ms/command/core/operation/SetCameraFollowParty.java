@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetCameraFollowParty implements Operation {
+/**
+ *   (set_camera_follow_party,<party_id>),  Works on map only.
+ */
+public class SetCameraFollowParty implements Operation{
 
     private Variable partyId;
 

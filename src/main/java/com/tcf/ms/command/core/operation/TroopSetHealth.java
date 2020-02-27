@@ -1,8 +1,12 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 
-public class TroopSetHealth implements Operation {
+/**
+ *   (troop_set_health,<troop_id>,<relative health (0-100)>),
+ */
+public class TroopSetHealth implements Operation{
 
     
 

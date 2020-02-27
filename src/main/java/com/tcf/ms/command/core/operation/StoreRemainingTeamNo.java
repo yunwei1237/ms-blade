@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreRemainingTeamNo implements Operation {
+/**
+ *   (store_remaining_team_no,<destination>),
+ */
+public class StoreRemainingTeamNo implements Operation{
 
     private Variable destination;
 

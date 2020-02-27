@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TroopJoin implements Operation {
+/**
+ *   (troop_join,<troop_id>),
+ */
+public class TroopJoin implements Operation{
 
     private Variable troopId;
 

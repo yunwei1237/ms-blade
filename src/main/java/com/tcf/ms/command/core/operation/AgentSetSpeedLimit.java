@@ -1,8 +1,12 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 
-public class AgentSetSpeedLimit implements Operation {
+/**
+ *   (agent_set_speed_limit,<agent_id>,<speed_limit(kilometers/hour)>),  Affects AI only 
+ */
+public class AgentSetSpeedLimit implements Operation{
 
     
 

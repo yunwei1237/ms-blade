@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class OverlaySetVal implements Operation {
+/**
+ *   (overlay_set_val, <overlay_id>, <value>),  can be used for sliders, combo buttons and check boxes
+ */
+public class OverlaySetVal implements Operation{
 
     private Variable overlayId;
     private Variable value;

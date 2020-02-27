@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyRemoveMembers implements Operation {
+/**
+ *   stores number removed to reg0  (party_remove_members,<party_id>,<troop_id>,<number>),
+ */
+public class PartyRemoveMembers implements Operation{
 
     private Variable partyId;
     private Variable troopId;

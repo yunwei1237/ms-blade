@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetPositionDelta implements Operation {
+/**
+ *   x, y, z  (set_position_delta,<value>,<value>,<value>),
+ */
+public class SetPositionDelta implements Operation{
 
     private Variable value;
     private Variable value2;

@@ -1,9 +1,13 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class RaceCompletedByPlayer implements Operation ,Conditable{
+/**
+ *   (race_completed_by_player),
+ */
+public class RaceCompletedByPlayer implements Conditable{
 
     
 

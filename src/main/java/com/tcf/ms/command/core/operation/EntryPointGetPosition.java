@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class EntryPointGetPosition implements Operation {
+/**
+ *   (entry_point_get_position,<position_no>,<entry_no>),
+ */
+public class EntryPointGetPosition implements Operation{
 
     private Variable positionNo;
     private Variable entryNo;

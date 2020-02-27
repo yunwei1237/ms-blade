@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.Conditable;
 
-public class Neg implements Operation , Conditable {
+/**
+ *   (neg|<operation>),
+ */
+public class Neg implements Conditable {
     private Operation operation;
 
     public Neg(Operation operation) {

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CurMapIconSetTableauMaterial implements Operation {
+/**
+ *   (cur_map_icon_set_tableau_material, <tableau_material_id>, <instance_code>),  only call inside ti_on_init_map_icon in module_scene_props
+ */
+public class CurMapIconSetTableauMaterial implements Operation{
 
     private Variable tableauMaterialId;
     private Variable instanceCode;

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PositionGetScaleZ implements Operation {
+/**
+ *   (position_get_scale_z,<destination_fixed_point>,<position_no>),  z scale in meters * fixed point multiplier is returned
+ */
+public class PositionGetScaleZ implements Operation{
 
     private Variable destinationFixedPoint;
     private Variable positionNo;

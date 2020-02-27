@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AgentGetSimpleBehavior implements Operation {
+/**
+ *   (agent_get_simple_behavior, <destination>, <agent_id>),  constants are written in header_mission_templates.py, starting with aisb_
+ */
+public class AgentGetSimpleBehavior implements Operation{
 
     private Variable destination;
     private Variable agentId;

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class QuestSetSlot implements Operation {
+/**
+ *   (quest_set_slot,<quest_id>,<slot_no>,<value>),
+ */
+public class QuestSetSlot implements Operation{
 
     private Variable questId;
     private Variable slotNo;

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AgentPlaySound implements Operation {
+/**
+ *   (agent_play_sound, <agent_id>, <sound_id>),
+ */
+public class AgentPlaySound implements Operation{
 
     private Variable agentId;
     private Variable soundId;

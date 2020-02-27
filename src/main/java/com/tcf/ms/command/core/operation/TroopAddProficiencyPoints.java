@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TroopAddProficiencyPoints implements Operation {
+/**
+ *   (troop_add_proficiency_points,<troop_id>,<value>),					
+ */
+public class TroopAddProficiencyPoints implements Operation{
 
     private Variable troopId;
     private Variable value;

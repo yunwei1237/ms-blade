@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class TeamsAreEnemies implements Operation ,Conditable{
+/**
+ *   (teams_are_enemies, <team_no>, <team_no_2>), 
+ */
+public class TeamsAreEnemies implements Conditable{
 
     private Variable teamNo;
     private Variable teamNo2;

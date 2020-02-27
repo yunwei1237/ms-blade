@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class OverlaySetSize implements Operation {
+/**
+ *   (overlay_set_size, <overlay_id>, <position_no>),  position's x and y values are used
+ */
+public class OverlaySetSize implements Operation{
 
     private Variable overlayId;
     private Variable positionNo;

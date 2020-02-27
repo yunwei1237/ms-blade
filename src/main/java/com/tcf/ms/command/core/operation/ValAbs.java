@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ValAbs implements Operation {
+/**
+ *  dest          ::       dest = abs(dest)  (val_abs,<destination>),
+ */
+public class ValAbs implements Operation{
 
     private Variable destination;
 

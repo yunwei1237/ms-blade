@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CreateImageButtonOverlayWithTableauMaterial implements Operation {
+/**
+ *   (create_image_button_overlay_with_tableau_material, <destination>, <mesh_id>, <tableau_material_id>, <value>),  returns overlay id. value is passed to tableau_material  when mesh_id is -1, a default mesh is generated automatically
+ */
+public class CreateImageButtonOverlayWithTableauMaterial implements Operation{
 
     private Variable destination;
     private Variable meshId;

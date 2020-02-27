@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StopAllSounds implements Operation {
+/**
+ *   (stop_all_sounds, [options]),   0 = default, 1 = fade out current track, 2 = stop current track
+ */
+public class StopAllSounds implements Operation{
 
     private Variable options;
 

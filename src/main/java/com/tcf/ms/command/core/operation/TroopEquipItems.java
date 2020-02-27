@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TroopEquipItems implements Operation {
+/**
+ *   (troop_equip_items,<troop_id>),  equips the items in the inventory automatically
+ */
+public class TroopEquipItems implements Operation{
 
     private Variable troopId;
 

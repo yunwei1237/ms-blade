@@ -1,8 +1,12 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreRepeatObject implements Operation {
+/**
+ *   stores the index of a repeated dialog option for repeat_for_factions, etc...
+ */
+public class StoreRepeatObject implements Operation{
 
     
 

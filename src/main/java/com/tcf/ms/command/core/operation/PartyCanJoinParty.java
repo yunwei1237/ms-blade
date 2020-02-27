@@ -1,10 +1,13 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
-import com.tcf.ms.command.core.Conditable;
 import com.tcf.ms.command.core.base.var.Variable;
+import com.tcf.ms.command.core.Conditable;
 
-public class PartyCanJoinParty implements Operation, Conditable {
+/**
+ *   (party_can_join_party, <joiner_party_id>, <host_party_id>,[flip_prisoners]),
+ */
+public class PartyCanJoinParty implements Conditable{
 
     private Variable joinerPartyId;
     private Variable hostPartyId;

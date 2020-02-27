@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ScenePropGetInstance implements Operation {
+/**
+ *   (scene_prop_get_instance,<destination>, <scene_prop_id>, <instance_no>),
+ */
+public class ScenePropGetInstance implements Operation{
 
     private Variable destination;
     private Variable scenePropId;

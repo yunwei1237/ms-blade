@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StartPresentation implements Operation {
+/**
+ *   (start_presentation, <presentation_id>),
+ */
+public class StartPresentation implements Operation{
 
     private Variable presentationId;
 

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CurTableauAddMeshWithVertexColor implements Operation {
+/**
+ *   (cur_tableau_add_mesh_with_vertex_color, <mesh_id>, <position_no>, <value_fixed_point>, <value_fixed_point>, <value>),  first value fixed point is the scale factor, second value fixed point is alpha. value is vertex color. use 0 for default values. vertex_color has no default value.
+ */
+public class CurTableauAddMeshWithVertexColor implements Operation{
 
     private Variable meshId;
     private Variable positionNo;

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreQuestItem implements Operation {
+/**
+ *   (store_quest_item,<destination>,<item_id>),
+ */
+public class StoreQuestItem implements Operation{
 
     private Variable destination;
     private Variable itemId;

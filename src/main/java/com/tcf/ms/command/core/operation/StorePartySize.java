@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StorePartySize implements Operation {
+/**
+ *   (store_party_size,<destination>,[party_id]),
+ */
+public class StorePartySize implements Operation{
 
     private Variable destination;
     private Variable partyId;

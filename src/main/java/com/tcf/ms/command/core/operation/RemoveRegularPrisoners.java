@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class RemoveRegularPrisoners implements Operation {
+/**
+ *   (remove_regular_prisoners,<party_id>),
+ */
+public class RemoveRegularPrisoners implements Operation{
 
     private Variable partyId;
 

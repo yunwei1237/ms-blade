@@ -3,10 +3,12 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TryForParties implements Operation {
+/**
+ *   (try_for_parties,<destination>),
+ */
+public class TryForParties implements Operation{
 
     private Variable destination;
-
 
     public TryForParties(Variable destination) {
         this.destination = destination;     

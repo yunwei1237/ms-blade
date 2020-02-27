@@ -1,8 +1,12 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 
-public class ChangeScreenQuit implements Operation {
+/**
+ *   (change_screen_quit),
+ */
+public class ChangeScreenQuit implements Operation{
 
     
 

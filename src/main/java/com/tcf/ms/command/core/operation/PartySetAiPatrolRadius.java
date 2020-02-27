@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartySetAiPatrolRadius implements Operation {
+/**
+ *   (party_set_ai_patrol_radius,<party_id>,<radius_in_km>),
+ */
+public class PartySetAiPatrolRadius implements Operation{
 
     private Variable partyId;
     private Variable radiusInKm;

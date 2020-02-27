@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetMerchandiseModifierQuality implements Operation {
+/**
+ *   Quality rate in percentage (average quality = 100),  (set_merchandise_modifier_quality,<value>),
+ */
+public class SetMerchandiseModifierQuality implements Operation{
 
     private Variable value;
 

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CurTableauAddHorse implements Operation {
+/**
+ *   (cur_tableau_add_horse, <item_id>, <position_no>, <animation_id>),
+ */
+public class CurTableauAddHorse implements Operation{
 
     private Variable itemId;
     private Variable positionNo;

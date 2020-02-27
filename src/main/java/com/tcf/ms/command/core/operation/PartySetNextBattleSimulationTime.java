@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartySetNextBattleSimulationTime implements Operation {
+/**
+ *   (party_set_next_battle_simulation_time,<party_id>,<next_simulation_time_in_hours>),
+ */
+public class PartySetNextBattleSimulationTime implements Operation{
 
     private Variable partyId;
     private Variable nextSimulationTimeInHours;

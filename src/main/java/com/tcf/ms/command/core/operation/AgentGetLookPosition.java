@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AgentGetLookPosition implements Operation {
+/**
+ *   (agent_get_look_position, <position_no>, <agent_id>),
+ */
+public class AgentGetLookPosition implements Operation{
 
     private Variable positionNo;
     private Variable agentId;

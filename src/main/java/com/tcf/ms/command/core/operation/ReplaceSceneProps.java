@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ReplaceSceneProps implements Operation {
+/**
+ *   (replace_scene_props, <old_scene_prop_id>,<new_scene_prop_id>), ---------------------------  Mission Consequence types ---------------------------
+ */
+public class ReplaceSceneProps implements Operation{
 
     private Variable oldScenePropId;
     private Variable newScenePropId;

@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class NumActiveTeamsLe implements Operation ,Conditable{
+/**
+ *   (num_active_teams_le,<value>),
+ */
+public class NumActiveTeamsLe implements Conditable{
 
     private Variable value;
 

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StartMapConversation implements Operation {
+/**
+ *   (start_map_conversation,<troop_id>),
+ */
+public class StartMapConversation implements Operation{
 
     private Variable troopId;
 

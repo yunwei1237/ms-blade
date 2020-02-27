@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CallScript implements Operation {
+/**
+ *   (call_script,<script_id>),
+ */
+public class CallScript implements Operation{
 
     private Variable scriptId;
 

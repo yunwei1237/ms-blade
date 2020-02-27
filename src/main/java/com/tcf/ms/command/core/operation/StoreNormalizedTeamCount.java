@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreNormalizedTeamCount implements Operation {
+/**
+ *  (store_normalized_team_count,<destination>, <team_no>),  Counts the number of agents belonging to a team  and normalizes the result regarding battle_size and advantage.
+ */
+public class StoreNormalizedTeamCount implements Operation{
 
     private Variable destination;
     private Variable teamNo;

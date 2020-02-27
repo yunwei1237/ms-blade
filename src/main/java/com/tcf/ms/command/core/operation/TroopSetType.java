@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TroopSetType implements Operation {
+/**
+ *   (troop_set_type,<troop_id>,<gender>),
+ */
+public class TroopSetType implements Operation{
 
     private Variable troopId;
     private Variable gender;

@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class Neq implements Operation ,Conditable{
+/**
+ *   not equal to		-- (neq,<value>,<value>),
+ */
+public class Neq implements Conditable{
 
     private Variable value;
     private Variable value2;

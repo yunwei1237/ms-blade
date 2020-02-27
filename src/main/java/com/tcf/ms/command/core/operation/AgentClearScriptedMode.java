@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AgentClearScriptedMode implements Operation {
+/**
+ *   (agent_clear_scripted_mode,<agent_id>),
+ */
+public class AgentClearScriptedMode implements Operation{
 
     private Variable agentId;
 

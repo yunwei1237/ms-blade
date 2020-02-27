@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreRandomInRange implements Operation {
+/**
+ *   gets random number in range [range_low,range_high] excluding range_high   (store_random_in_range,<destination>,<range_low>,<range_high>),
+ */
+public class StoreRandomInRange implements Operation{
 
     private Variable destination;
     private Variable rangeLow;

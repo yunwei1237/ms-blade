@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PositionNormalizeOrigin implements Operation {
+/**
+ *   (position_normalize_origin,<destination_fixed_point>,<position_no>),  destination = convert_to_fixed_point(length(position.origin))  position.origin *= 1/length(position.origin)  so it normalizes the origin vector
+ */
+public class PositionNormalizeOrigin implements Operation{
 
     private Variable destinationFixedPoint;
     private Variable positionNo;

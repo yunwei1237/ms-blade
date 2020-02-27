@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AddVisitorsToCurrentScene implements Operation {
+/**
+ *   (add_visitors_to_current_scene,<entry_no>,<troop_id>,<number_of_troops>),
+ */
+public class AddVisitorsToCurrentScene implements Operation{
 
     private Variable entryNo;
     private Variable troopId;

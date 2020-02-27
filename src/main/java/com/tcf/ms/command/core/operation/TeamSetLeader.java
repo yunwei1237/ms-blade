@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TeamSetLeader implements Operation {
+/**
+ *   (team_set_leader, <team_no>, <new_leader_agent_id>),
+ */
+public class TeamSetLeader implements Operation{
 
     private Variable teamNo;
     private Variable newLeaderAgentId;

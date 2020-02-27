@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ChangeScreenExchangeWithParty implements Operation {
+/**
+ *   (change_screen_exchange_with_party, <party_id>),
+ */
+public class ChangeScreenExchangeWithParty implements Operation{
 
     private Variable partyId;
 

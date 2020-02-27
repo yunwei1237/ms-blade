@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TeamGetOrderPosition implements Operation {
+/**
+ *   (team_get_order_position, <position_no>, <team_no>, <sub_class>),
+ */
+public class TeamGetOrderPosition implements Operation{
 
     private Variable positionNo;
     private Variable teamNo;

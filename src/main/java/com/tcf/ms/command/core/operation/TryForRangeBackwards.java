@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TryForRangeBackwards implements Operation {
+/**
+ *   Same as above but starts from (upper-bound - 1) down-to lower bound.  (try_for_range_backwards,<destination>,<upper_bound>,<lower_bound>),
+ */
+public class TryForRangeBackwards implements Operation{
 
     private Variable destination;
     private Variable upperBound;

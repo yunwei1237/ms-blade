@@ -1,8 +1,12 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 
-public class ChangeScreenMapConversation implements Operation {
+/**
+ *   (change_screen_map_conversation),
+ */
+public class ChangeScreenMapConversation implements Operation{
 
     
 

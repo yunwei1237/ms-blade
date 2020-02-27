@@ -1,17 +1,21 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetSpawnPosition implements Operation {
+/**
+ *   (set_spawn_position, <position_no>) 
+ */
+public class SetSpawnPosition implements Operation{
 
-    
+    private Variable positionNo;
 
-    public SetSpawnPosition() {
-             
+    public SetSpawnPosition(Variable positionNo) {
+        this.positionNo = positionNo;     
     }
 
     @Override
     public String toScriptString() {
-        return String.format("(set_spawn_position),");
+        return String.format("(set_spawn_position,%s),",positionNo);
     }
 }

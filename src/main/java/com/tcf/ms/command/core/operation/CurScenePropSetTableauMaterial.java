@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CurScenePropSetTableauMaterial implements Operation {
+/**
+ *   (cur_scene_prop_set_tableau_material, <tableau_material_id>, <instance_code>),  only call inside ti_on_init_scene_prop in module_scene_props
+ */
+public class CurScenePropSetTableauMaterial implements Operation{
 
     private Variable tableauMaterialId;
     private Variable instanceCode;

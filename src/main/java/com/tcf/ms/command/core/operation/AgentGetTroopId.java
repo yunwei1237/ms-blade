@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AgentGetTroopId implements Operation {
+/**
+ *   (agent_get_troop_id,<destination>, <agent_id>),
+ */
+public class AgentGetTroopId implements Operation{
 
     private Variable destination;
     private Variable agentId;

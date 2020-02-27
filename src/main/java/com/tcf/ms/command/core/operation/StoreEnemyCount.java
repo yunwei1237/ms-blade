@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreEnemyCount implements Operation {
+/**
+ *   (store_enemy_count,<destination>),
+ */
+public class StoreEnemyCount implements Operation{
 
     private Variable destination;
 

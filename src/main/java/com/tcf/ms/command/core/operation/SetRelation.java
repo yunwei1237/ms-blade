@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetRelation implements Operation {
+/**
+ *   (set_relation,<faction_id>,<faction_id>,<value>),
+ */
+public class SetRelation implements Operation{
 
     private Variable factionId;
     private Variable factionId2;

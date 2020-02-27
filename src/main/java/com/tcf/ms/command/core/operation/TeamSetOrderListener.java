@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TeamSetOrderListener implements Operation {
+/**
+ *   (team_set_order_listener, <team_no>, <sub_class>),
+ */
+public class TeamSetOrderListener implements Operation{
 
     private Variable teamNo;
     private Variable subClass;

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StrStoreAgentName implements Operation {
+/**
+ *   (str_store_agent_name,<string_register>,<agent_id>),
+ */
+public class StrStoreAgentName implements Operation{
 
     private Variable stringRegister;
     private Variable agentId;

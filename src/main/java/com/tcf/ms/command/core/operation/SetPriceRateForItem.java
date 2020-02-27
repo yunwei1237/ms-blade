@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetPriceRateForItem implements Operation {
+/**
+ *   (set_price_rate_for_item,<item_id>,<value_percentage>),
+ */
+public class SetPriceRateForItem implements Operation{
 
     private Variable itemId;
     private Variable valuePercentage;

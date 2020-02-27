@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreOr implements Operation {
+/**
+ *  dest, op1, op2 :      dest = op1 | op2  (store_or,<destination>,<value>,<value>),
+ */
+public class StoreOr implements Operation{
 
     private Variable destination;
     private Variable value;

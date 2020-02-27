@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StrStoreDate implements Operation {
+/**
+ *   (str_store_date,<string_register>,<number_of_days_to_add_to_the_current_date>),
+ */
+public class StrStoreDate implements Operation{
 
     private Variable stringRegister;
     private Variable numberOfDaysToAddToTheCurrentDate;

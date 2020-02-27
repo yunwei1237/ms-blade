@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class GetSceneBoundaries implements Operation {
+/**
+ *   (get_scene_boundaries, <position_min>, <position_max>),
+ */
+public class GetSceneBoundaries implements Operation{
 
     private Variable positionMin;
     private Variable positionMax;

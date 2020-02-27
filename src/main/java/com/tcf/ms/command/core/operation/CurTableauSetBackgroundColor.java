@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CurTableauSetBackgroundColor implements Operation {
+/**
+ *   (cur_tableau_set_background_color, <value>),
+ */
+public class CurTableauSetBackgroundColor implements Operation{
 
     private Variable value;
 

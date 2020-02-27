@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetMerchandiseMaxValue implements Operation {
+/**
+ *   (set_merchandise_max_value,<value>),
+ */
+public class SetMerchandiseMaxValue implements Operation{
 
     private Variable value;
 

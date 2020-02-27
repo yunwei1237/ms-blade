@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreItemKindCount implements Operation {
+/**
+ *   (store_item_kind_count,<destination>,<item_id>,[troop_id]),
+ */
+public class StoreItemKindCount implements Operation{
 
     private Variable destination;
     private Variable itemId;

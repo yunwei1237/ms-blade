@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyGetSkillLevel implements Operation {
+/**
+ *   (party_get_skill_level, <destination>, <party_id>, <skill_no>),
+ */
+public class PartyGetSkillLevel implements Operation{
 
     private Variable destination;
     private Variable partyId;

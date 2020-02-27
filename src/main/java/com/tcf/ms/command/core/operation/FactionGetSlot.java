@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class FactionGetSlot implements Operation {
+/**
+ *   (faction_get_slot,<destination>,<faction_id>,<slot_no>),
+ */
+public class FactionGetSlot implements Operation{
 
     private Variable destination;
     private Variable factionId;

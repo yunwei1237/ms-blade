@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreScriptParam implements Operation {
+/**
+ *   (store_script_param,<destination>,<script_param_no>), --(Within a script) stores <script_param_no>th script parameter.
+ */
+public class StoreScriptParam implements Operation{
 
     private Variable destination;
     private Variable scriptParamNo;

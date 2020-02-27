@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreNumPartiesOfTemplate implements Operation {
+/**
+ *   (store_num_parties_of_template,<destination>,<party_template_id>),
+ */
+public class StoreNumPartiesOfTemplate implements Operation{
 
     private Variable destination;
     private Variable partyTemplateId;

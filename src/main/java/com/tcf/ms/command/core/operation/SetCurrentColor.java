@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetCurrentColor implements Operation {
+/**
+ *   red, green, blue: a value of 255 means 100%  (set_current_color,<value>,<value>,<value>),
+ */
+public class SetCurrentColor implements Operation{
 
     private Variable value;
     private Variable value2;

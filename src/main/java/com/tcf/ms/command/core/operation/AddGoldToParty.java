@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AddGoldToParty implements Operation {
+/**
+ *   party_id should be different from 0  (add_gold_to_party,<value>,<party_id>),
+ */
+public class AddGoldToParty implements Operation{
 
     private Variable value;
     private Variable partyId;

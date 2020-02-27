@@ -1,9 +1,13 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class MapFree implements Operation ,Conditable{
+/**
+ *   (map_free),
+ */
+public class MapFree implements Conditable{
 
     
 

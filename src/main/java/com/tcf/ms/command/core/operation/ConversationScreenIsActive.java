@@ -1,9 +1,13 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class ConversationScreenIsActive implements Operation ,Conditable{
+/**
+ *   (conversation_screen_active),  used in mission template triggers only
+ */
+public class ConversationScreenIsActive implements Conditable{
 
     
 

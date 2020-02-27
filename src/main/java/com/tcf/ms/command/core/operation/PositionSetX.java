@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PositionSetX implements Operation {
+/**
+ *   (position_set_x,<position_no>,<value_fixed_point>),  meters / fixed point multiplier is set
+ */
+public class PositionSetX implements Operation{
 
     private Variable positionNo;
     private Variable valueFixedPoint;

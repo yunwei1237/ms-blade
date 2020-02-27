@@ -4,16 +4,19 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class KeyIsDown implements Operation ,Conditable{
+/**
+ *   fails if the key is not currently down (key_is_down, <key_id>),
+ */
+public class KeyIsDown implements Conditable{
 
-    private Variable gameKeyId;
+    private Variable keyId;
 
-    public KeyIsDown(Variable gameKeyId) {
-        this.gameKeyId = gameKeyId;     
+    public KeyIsDown(Variable keyId) {
+        this.keyId = keyId;     
     }
 
     @Override
     public String toScriptString() {
-        return String.format("(key_is_down,%s),",gameKeyId);
+        return String.format("(key_is_down,%s),",keyId);
     }
 }

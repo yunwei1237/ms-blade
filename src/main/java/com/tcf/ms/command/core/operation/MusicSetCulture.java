@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class MusicSetCulture implements Operation {
+/**
+ *   (music_set_culture, <culture_type>),
+ */
+public class MusicSetCulture implements Operation{
 
     private Variable cultureType;
 

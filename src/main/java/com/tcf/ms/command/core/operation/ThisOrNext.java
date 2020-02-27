@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.Conditable;
 
-public class ThisOrNext implements Operation , Conditable {
+/**
+ *   (this_or_next|<operation>),
+ */
+public class ThisOrNext implements Conditable {
     /**
      * 操作
      */

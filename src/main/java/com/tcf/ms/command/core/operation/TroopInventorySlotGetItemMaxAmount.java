@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TroopInventorySlotGetItemMaxAmount implements Operation {
+/**
+ *   (troop_inventory_slot_get_item_max_amount,<destination>,<troop_id>,<inventory_slot_no>),
+ */
+public class TroopInventorySlotGetItemMaxAmount implements Operation{
 
     private Variable destination;
     private Variable troopId;

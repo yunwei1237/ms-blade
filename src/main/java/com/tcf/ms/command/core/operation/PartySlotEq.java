@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class PartySlotEq implements Operation ,Conditable{
+/**
+ *   (party_slot_eq,<party_id>,<slot_no>,<value>),
+ */
+public class PartySlotEq implements Conditable{
 
     private Variable partyId;
     private Variable slotNo;

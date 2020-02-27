@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TutorialMessage implements Operation {
+/**
+ *   (tutorial_message,<string_id>, <color>),  set string_id = -1 for hiding the message
+ */
+public class TutorialMessage implements Operation{
 
     private Variable stringId;
     private Variable color;

@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class AgentIsDefender implements Operation ,Conditable{
+/**
+ *   (agent_is_defender,<agent_id>),
+ */
+public class AgentIsDefender implements Conditable{
 
     private Variable agentId;
 

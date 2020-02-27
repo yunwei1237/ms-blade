@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ShuffleRange implements Operation {
+/**
+ *   (shuffle_range,<reg_no>,<reg_no>),
+ */
+public class ShuffleRange implements Operation{
 
     private Variable regNo;
     private Variable regNo2;

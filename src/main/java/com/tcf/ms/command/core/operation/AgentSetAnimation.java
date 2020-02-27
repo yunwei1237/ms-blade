@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AgentSetAnimation implements Operation {
+/**
+ *   (agent_set_animation, <agent_id>, <anim_id>),
+ */
+public class AgentSetAnimation implements Operation{
 
     private Variable agentId;
     private Variable animId;

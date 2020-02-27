@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ValClamp implements Operation {
+/**
+ *  dest, operand ::       dest = max(min(dest,<upper_bound> - 1),<lower_bound>)  (val_clamp,<destination>,<lower_bound>, <upper_bound>),
+ */
+public class ValClamp implements Operation{
 
     private Variable destination;
     private Variable lowerBound;

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyAddTemplate implements Operation {
+/**
+ *   (party_add_template, <party_id>, <party_template_id>, [reverse_prisoner_status]),
+ */
+public class PartyAddTemplate implements Operation{
 
     private Variable partyId;
     private Variable partyTemplateId;

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyAddPrisoners implements Operation {
+/**
+ *   (party_add_prisoners,<party_id>,<troop_id>,<number>), returns number added in reg0
+ */
+public class PartyAddPrisoners implements Operation{
 
     private Variable partyId;
     private Variable troopId;

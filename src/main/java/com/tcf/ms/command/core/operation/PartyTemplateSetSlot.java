@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyTemplateSetSlot implements Operation {
+/**
+ *   (party_template_set_slot,<party_template_id>,<slot_no>,<value>),
+ */
+public class PartyTemplateSetSlot implements Operation{
 
     private Variable partyTemplateId;
     private Variable slotNo;

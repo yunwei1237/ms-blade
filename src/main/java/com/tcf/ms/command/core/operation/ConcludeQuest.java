@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ConcludeQuest implements Operation {
+/**
+ *   (conclude_quest,<quest_id>),
+ */
+public class ConcludeQuest implements Operation{
 
     private Variable questId;
 

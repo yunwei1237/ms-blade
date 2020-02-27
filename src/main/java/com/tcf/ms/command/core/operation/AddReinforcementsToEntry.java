@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AddReinforcementsToEntry implements Operation {
+/**
+ *   (add_reinforcements_to_entry,<mission_template_entry_no>,<value>),
+ */
+public class AddReinforcementsToEntry implements Operation{
 
     private Variable missionTemplateEntryNo;
     private Variable value;

@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class PartyIsInTown implements Operation ,Conditable{
+/**
+ *   (party_is_in_town,<party_id_1>,<party_id_2>),
+ */
+public class PartyIsInTown implements Conditable{
 
     private Variable partyId1;
     private Variable partyId2;

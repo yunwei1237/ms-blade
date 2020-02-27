@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class RemoveMemberFromParty implements Operation {
+/**
+ *   (remove_member_from_party,<troop_id>,[party_id]),
+ */
+public class RemoveMemberFromParty implements Operation{
 
     private Variable troopId;
     private Variable partyId;

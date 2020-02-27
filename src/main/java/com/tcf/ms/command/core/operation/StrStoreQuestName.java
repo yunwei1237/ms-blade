@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StrStoreQuestName implements Operation {
+/**
+ *   (str_store_quest_name,<string_register>,<quest_id>),
+ */
+public class StrStoreQuestName implements Operation{
 
     private Variable stringRegister;
     private Variable questId;

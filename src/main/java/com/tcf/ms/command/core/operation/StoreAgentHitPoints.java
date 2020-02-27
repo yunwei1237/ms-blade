@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreAgentHitPoints implements Operation {
+/**
+ *   set absolute to 1 to retrieve actual hps, otherwise will return relative hp in range [0..100]  (store_agent_hit_points,<destination>,<agent_id>,[absolute]),
+ */
+public class StoreAgentHitPoints implements Operation{
 
     private Variable destination;
     private Variable agentId;

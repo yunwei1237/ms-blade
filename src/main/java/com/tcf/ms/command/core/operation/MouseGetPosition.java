@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class MouseGetPosition implements Operation {
+/**
+ *   (mouse_get_position, <position_no>),  x and y values of position are filled
+ */
+public class MouseGetPosition implements Operation{
 
     private Variable positionNo;
 

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartySetIcon implements Operation {
+/**
+ *   (party_set_icon, <party_id>, <map_icon_id>),
+ */
+public class PartySetIcon implements Operation{
 
     private Variable partyId;
     private Variable mapIconId;

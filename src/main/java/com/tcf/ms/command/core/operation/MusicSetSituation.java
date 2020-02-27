@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class MusicSetSituation implements Operation {
+/**
+ *   (music_set_situation, <situation_type>),
+ */
+public class MusicSetSituation implements Operation{
 
     private Variable situationType;
 

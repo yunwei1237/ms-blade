@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AgentSetAnimationProgress implements Operation {
+/**
+ *   (agent_set_animation_progress, <agent_id>, <value_fixed_point>),  value should be between 0-1 (as fixed point)
+ */
+public class AgentSetAnimationProgress implements Operation{
 
     private Variable agentId;
     private Variable valueFixedPoint;

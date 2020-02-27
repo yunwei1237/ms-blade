@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetTriggerResult implements Operation {
+/**
+ *   (set_trigger_result, <value>),
+ */
+public class SetTriggerResult implements Operation{
 
     private Variable value;
 

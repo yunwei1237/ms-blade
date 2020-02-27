@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ParticleSystemEmit implements Operation {
+/**
+ *   (particle_system_emit,<par_sys_id>,<value_num_particles>,<value_period>),
+ */
+public class ParticleSystemEmit implements Operation{
 
     private Variable parSysId;
     private Variable valueNumParticles;

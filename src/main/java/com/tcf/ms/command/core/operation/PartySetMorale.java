@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartySetMorale implements Operation {
+/**
+ *   (party_set_morale, <party_id>, <value>),  value is clamped to range [0...100].
+ */
+public class PartySetMorale implements Operation{
 
     private Variable partyId;
     private Variable value;

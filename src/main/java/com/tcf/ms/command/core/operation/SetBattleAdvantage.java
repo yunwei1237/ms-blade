@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetBattleAdvantage implements Operation {
+/**
+ *   (set_battle_advantage, <value>),
+ */
+public class SetBattleAdvantage implements Operation{
 
     private Variable value;
 

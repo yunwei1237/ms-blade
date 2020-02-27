@@ -1,17 +1,25 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 
-public class OverlayAnimateToHighlightAlpha implements Operation {
+/**
+ *   (overlay_animate_to_highlight_alpha, <overlay_id>, <duration-in-1/1000-seconds>, <color>),  only alpha value will be used
+ */
+public class OverlayAnimateToHighlightAlpha implements Operation{
 
-    
+    private Variable overlayId;
+    private Variable duration;
+    private Variable color;
 
-    public OverlayAnimateToHighlightAlpha() {
-             
+    public OverlayAnimateToHighlightAlpha(Variable overlayId,Variable duration,Variable color) {
+        this.overlayId = overlayId;
+        this.duration = duration;
+        this.color = color;     
     }
 
     @Override
     public String toScriptString() {
-        return String.format("(overlay_animate_to_highlight_alpha),");
+        return String.format("(overlay_animate_to_highlight_alpha,%s,%s,%s),",overlayId,duration,color);
     }
 }

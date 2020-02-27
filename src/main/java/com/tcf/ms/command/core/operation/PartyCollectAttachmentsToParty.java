@@ -3,18 +3,21 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyCollectAttachmentsToParty implements Operation {
+/**
+ *   (party_collect_attachments_to_party, <party_id>, <destination party_id>),
+ */
+public class PartyCollectAttachmentsToParty implements Operation{
 
     private Variable partyId;
-    private Variable destination;
+    private Variable destinationPartyId;
 
-    public PartyCollectAttachmentsToParty(Variable partyId, Variable destination) {
+    public PartyCollectAttachmentsToParty(Variable partyId,Variable destinationPartyId) {
         this.partyId = partyId;
-        this.destination = destination;
+        this.destinationPartyId = destinationPartyId;     
     }
 
     @Override
     public String toScriptString() {
-        return String.format("(party_collect_attachments_to_party,%s,%s),",partyId,destination);
+        return String.format("(party_collect_attachments_to_party,%s,%s),",partyId,destinationPartyId);
     }
 }

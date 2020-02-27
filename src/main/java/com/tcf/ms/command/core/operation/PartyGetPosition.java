@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyGetPosition implements Operation {
+/**
+ *   (party_get_position,<position_no>,<party_id>),
+ */
+public class PartyGetPosition implements Operation{
 
     private Variable positionNo;
     private Variable partyId;

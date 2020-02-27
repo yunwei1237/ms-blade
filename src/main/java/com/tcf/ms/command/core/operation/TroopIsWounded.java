@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class TroopIsWounded implements Operation ,Conditable{
+/**
+ *   (troop_is_wounded,<troop_id>),  only for heroes!
+ */
+public class TroopIsWounded implements Conditable{
 
     private Variable troopId;
 

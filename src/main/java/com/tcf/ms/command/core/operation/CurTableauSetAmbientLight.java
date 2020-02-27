@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CurTableauSetAmbientLight implements Operation {
+/**
+ *   (cur_tableau_set_ambient_light, <red_fixed_point>, <green_fixed_point>, <blue_fixed_point>),
+ */
+public class CurTableauSetAmbientLight implements Operation{
 
     private Variable redFixedPoint;
     private Variable greenFixedPoint;

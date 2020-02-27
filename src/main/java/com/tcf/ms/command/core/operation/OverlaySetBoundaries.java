@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class OverlaySetBoundaries implements Operation {
+/**
+ *   (overlay_set_boundaries, <overlay_id>, <min_value>, <max_value>),
+ */
+public class OverlaySetBoundaries implements Operation{
 
     private Variable overlayId;
     private Variable minValue;

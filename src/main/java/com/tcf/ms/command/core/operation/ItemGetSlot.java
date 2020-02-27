@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ItemGetSlot implements Operation {
+/**
+ *   (item_get_slot,<destination>,<item_id>,<slot_no>),
+ */
+public class ItemGetSlot implements Operation{
 
     private Variable destination;
     private Variable itemId;

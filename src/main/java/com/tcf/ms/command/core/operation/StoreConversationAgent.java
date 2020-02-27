@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreConversationAgent implements Operation {
+/**
+ *   (store_conversation_agent,<destination>),
+ */
+public class StoreConversationAgent implements Operation{
 
     private Variable destination;
 

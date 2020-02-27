@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreRandomTroopToCapture implements Operation {
+/**
+ *   (store_random_troop_to_capture,<destination>,<lower_bound>,<upper_bound>),
+ */
+public class StoreRandomTroopToCapture implements Operation{
 
     private Variable destination;
     private Variable lowerBound;

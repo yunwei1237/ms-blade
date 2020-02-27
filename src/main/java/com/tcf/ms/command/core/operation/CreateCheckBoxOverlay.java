@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CreateCheckBoxOverlay implements Operation {
+/**
+ *   (create_check_box_overlay, <destination>),  returns overlay id
+ */
+public class CreateCheckBoxOverlay implements Operation{
 
     private Variable destination;
 

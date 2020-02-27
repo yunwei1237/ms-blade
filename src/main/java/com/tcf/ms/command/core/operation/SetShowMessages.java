@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetShowMessages implements Operation {
+/**
+ *   (set_show_messages,<value>),  0 disables window messages 1 re-enables them.
+ */
+public class SetShowMessages implements Operation{
 
     private Variable value;
 

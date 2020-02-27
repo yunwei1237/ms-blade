@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PlayTrack implements Operation {
+/**
+ *   (play_track,<track_id>, [options]),   0 = default, 1 = fade out current track, 2 = stop current track
+ */
+public class PlayTrack implements Operation{
 
     private Variable trackId;
     private Variable options;

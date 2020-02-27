@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PositionRotateY implements Operation {
+/**
+ *   (position_rotate_y,<position_no>,<angle>),
+ */
+public class PositionRotateY implements Operation{
 
     private Variable positionNo;
     private Variable angle;

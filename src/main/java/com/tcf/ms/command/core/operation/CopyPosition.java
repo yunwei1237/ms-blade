@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CopyPosition implements Operation {
+/**
+ *   copies position_no_2 to position_no_1  (copy_position,<position_no_1>,<position_no_2>),
+ */
+public class CopyPosition implements Operation{
 
     private Variable positionNo1;
     private Variable positionNo2;

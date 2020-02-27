@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ParticleSystemAddNew implements Operation {
+/**
+ *   (particle_system_add_new,<par_sys_id>,[position_no]),
+ */
+public class ParticleSystemAddNew implements Operation{
 
     private Variable parSysId;
     private Variable positionNo;

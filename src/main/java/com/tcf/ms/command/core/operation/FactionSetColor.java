@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class FactionSetColor implements Operation {
+/**
+ *   (faction_set_color, <faction_id>, <value>),
+ */
+public class FactionSetColor implements Operation{
 
     private Variable factionId;
     private Variable value;

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetFogDistance implements Operation {
+/**
+ *   (set_fog_distance, <distance_in_meters>, [fog_color]),
+ */
+public class SetFogDistance implements Operation{
 
     private Variable distanceInMeters;
     private Variable fogColor;

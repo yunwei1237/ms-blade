@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CurTableauSetCameraPosition implements Operation {
+/**
+ *   (cur_tableau_set_camera_position, <position_no>),
+ */
+public class CurTableauSetCameraPosition implements Operation{
 
     private Variable positionNo;
 

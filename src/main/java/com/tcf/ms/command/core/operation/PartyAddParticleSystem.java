@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyAddParticleSystem implements Operation {
+/**
+ *   (party_add_particle_system, <party_id>, <particle_system_id>),
+ */
+public class PartyAddParticleSystem implements Operation{
 
     private Variable partyId;
     private Variable particleSystemId;

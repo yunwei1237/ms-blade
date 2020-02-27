@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TeamGetWeaponUsageOrder implements Operation {
+/**
+ *   (team_get_weapon_usage_order, <destination>, <team_no>, <sub_class>),
+ */
+public class TeamGetWeaponUsageOrder implements Operation{
 
     private Variable destination;
     private Variable teamNo;

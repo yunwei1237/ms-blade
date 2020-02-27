@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CurTableauAddMapIcon implements Operation {
+/**
+ *   (cur_tableau_add_map_icon, <map_icon_id>, <position_no>, <value_fixed_point>),  value fixed point is the scale factor
+ */
+public class CurTableauAddMapIcon implements Operation{
 
     private Variable mapIconId;
     private Variable positionNo;

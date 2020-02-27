@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetGlobalHazeAmount implements Operation {
+/**
+ *   (set_global_haze_amount, <value>),  value is clamped to 0-100
+ */
+public class SetGlobalHazeAmount implements Operation{
 
     private Variable value;
 

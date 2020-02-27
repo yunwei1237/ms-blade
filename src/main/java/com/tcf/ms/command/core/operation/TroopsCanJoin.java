@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class TroopsCanJoin implements Operation ,Conditable{
+/**
+ *   (troops_can_join,<value>),
+ */
+public class TroopsCanJoin implements Conditable{
 
     private Variable value;
 

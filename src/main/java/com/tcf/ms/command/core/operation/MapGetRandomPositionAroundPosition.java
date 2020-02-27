@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class MapGetRandomPositionAroundPosition implements Operation {
+/**
+ *   (map_get_random_position_around_position,<dest_position_no>,<source_position_no>,<radius>),
+ */
+public class MapGetRandomPositionAroundPosition implements Operation{
 
     private Variable destPositionNo;
     private Variable sourcePositionNo;

@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class HeroCanJoin implements Operation ,Conditable{
+/**
+ *   (hero_can_join, [party_id]),
+ */
+public class HeroCanJoin implements Conditable{
 
     private Variable partyId;
 

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ValAnd implements Operation {
+/**
+ *  dest, operand ::       dest = dest & operand  (val_and,<destination>,<value>),
+ */
+public class ValAnd implements Operation{
 
     private Variable destination;
     private Variable value;

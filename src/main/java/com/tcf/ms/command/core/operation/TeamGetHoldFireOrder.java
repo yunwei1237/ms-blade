@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TeamGetHoldFireOrder implements Operation {
+/**
+ *   (team_get_hold_fire_order, <destination>, <team_no>, <sub_class>),
+ */
+public class TeamGetHoldFireOrder implements Operation{
 
     private Variable destination;
     private Variable teamNo;

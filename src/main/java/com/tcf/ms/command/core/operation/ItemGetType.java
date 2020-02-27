@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class ItemGetType implements Operation {
+/**
+ *   (item_get_type, <destination>, <item_id>),  returned values are listed at header_items.py (values starting with itp_type_)
+ */
+public class ItemGetType implements Operation{
 
     private Variable destination;
     private Variable itemId;

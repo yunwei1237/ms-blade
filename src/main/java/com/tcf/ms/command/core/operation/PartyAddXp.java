@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyAddXp implements Operation {
+/**
+ *   (party_add_xp, <party_id>, <xp_amount>),
+ */
+public class PartyAddXp implements Operation{
 
     private Variable partyId;
     private Variable xpAmount;

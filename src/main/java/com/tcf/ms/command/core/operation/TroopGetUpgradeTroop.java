@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TroopGetUpgradeTroop implements Operation {
+/**
+ *   (troop_get_upgrade_troop,<destination>,<troop_id>,<upgrade_path>),  upgrade_path can be: 0 = random, 1 = getGroup first node, 2 = getGroup second node (returns -1 if not available)
+ */
+public class TroopGetUpgradeTroop implements Operation{
 
     private Variable destination;
     private Variable troopId;

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TroopEnsureInventorySpace implements Operation {
+/**
+ *   (troop_ensure_inventory_space,<troop_id>,<value>),
+ */
+public class TroopEnsureInventorySpace implements Operation{
 
     private Variable troopId;
     private Variable value;

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StartBackgroundPresentation implements Operation {
+/**
+ *   (start_background_presentation, <presentation_id>),  can only be used in game menus
+ */
+public class StartBackgroundPresentation implements Operation{
 
     private Variable presentationId;
 

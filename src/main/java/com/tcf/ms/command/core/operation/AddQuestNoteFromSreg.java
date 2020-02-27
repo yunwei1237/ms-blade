@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AddQuestNoteFromSreg implements Operation {
+/**
+ *   (add_quest_note_from_sreg,<quest_id>,<note_slot_no>,<string_id>, <value>),  There are maximum of 8 slots value = 1 -> shows when the note is added
+ */
+public class AddQuestNoteFromSreg implements Operation{
 
     private Variable questId;
     private Variable noteSlotNo;

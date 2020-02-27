@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SceneGetSlot implements Operation {
+/**
+ *   (scene_get_slot,<destination>,<scene_id>,<slot_no>),
+ */
+public class SceneGetSlot implements Operation{
 
     private Variable destination;
     private Variable sceneId;

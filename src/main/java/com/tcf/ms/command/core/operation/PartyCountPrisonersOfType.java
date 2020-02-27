@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyCountPrisonersOfType implements Operation {
+/**
+ *   (party_count_prisoners_of_type,<destination>,<party_id>,<troop_id>),
+ */
+public class PartyCountPrisonersOfType implements Operation{
 
     private Variable destination;
     private Variable partyId;

@@ -1,8 +1,12 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 
-public class ResetMissionTimerA implements Operation {
+/**
+ *   (reset_mission_timer_a),
+ */
+public class ResetMissionTimerA implements Operation{
 
     
 

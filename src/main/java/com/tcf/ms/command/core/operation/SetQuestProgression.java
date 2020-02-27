@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetQuestProgression implements Operation {
+/**
+ *   (set_quest_progression,<quest_id>,<value>),
+ */
+public class SetQuestProgression implements Operation{
 
     private Variable questId;
     private Variable value;

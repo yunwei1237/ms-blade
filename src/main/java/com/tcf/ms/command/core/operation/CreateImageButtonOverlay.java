@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CreateImageButtonOverlay implements Operation {
+/**
+ *   (create_image_button_overlay, <destination>, <mesh_id>, <mesh_id>),  returns overlay id. second mesh is the pressed button mesh
+ */
+public class CreateImageButtonOverlay implements Operation{
 
     private Variable destination;
     private Variable meshId;

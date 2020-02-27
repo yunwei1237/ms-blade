@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreSin implements Operation {
+/**
+ *   (store_sin, <destination_fixed_point>, <value_fixed_point>), takes sine of the value that is in degrees
+ */
+public class StoreSin implements Operation{
 
     private Variable destinationFixedPoint;
     private Variable valueFixedPoint;

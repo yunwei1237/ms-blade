@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreRelation implements Operation {
+/**
+ *   (store_relation,<destination>,<faction_id_1>,<faction_id_2>),
+ */
+public class StoreRelation implements Operation{
 
     private Variable destination;
     private Variable factionId1;

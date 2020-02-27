@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetGameMenuTableauMesh implements Operation {
+/**
+ *   (set_game_menu_tableau_mesh, <tableau_material_id>, <value>, <position_register_no>),  value is passed to tableau_material  position contains the following information: x = x position of the mesh, y = y position of the mesh, z = scale of the mesh
+ */
+public class SetGameMenuTableauMesh implements Operation{
 
     private Variable tableauMaterialId;
     private Variable value;

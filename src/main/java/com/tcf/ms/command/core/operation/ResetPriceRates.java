@@ -1,8 +1,12 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 
-public class ResetPriceRates implements Operation {
+/**
+ *   (reset_price_rates),
+ */
+public class ResetPriceRates implements Operation{
 
     
 

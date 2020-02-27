@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TroopSetAutoEquip implements Operation {
+/**
+ *   (troop_set_auto_equip,<troop_id>,<value>), disables otr enables auto-equipping
+ */
+public class TroopSetAutoEquip implements Operation{
 
     private Variable troopId;
     private Variable value;

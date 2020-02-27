@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TeamSetRelation implements Operation {
+/**
+ *   (team_set_relation, <team_no>, <team_no_2>, <value>),   -1 for enemy, 1 for friend, 0 for neutral
+ */
+public class TeamSetRelation implements Operation{
 
     private Variable teamNo;
     private Variable teamNo2;

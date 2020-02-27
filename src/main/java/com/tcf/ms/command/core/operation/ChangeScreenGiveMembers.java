@@ -1,8 +1,12 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
+import com.tcf.ms.command.core.base.var.Variable;
 
-public class ChangeScreenGiveMembers implements Operation {
+/**
+ *   (change_screen_give_members),
+ */
+public class ChangeScreenGiveMembers implements Operation{
 
     
 

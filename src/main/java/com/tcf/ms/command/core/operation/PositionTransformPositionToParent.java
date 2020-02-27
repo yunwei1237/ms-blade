@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PositionTransformPositionToParent implements Operation {
+/**
+ *   (position_transform_position_to_parent,<dest_position_no>,<position_no>,<position_no_to_be_transformed>),
+ */
+public class PositionTransformPositionToParent implements Operation{
 
     private Variable destPositionNo;
     private Variable positionNo;

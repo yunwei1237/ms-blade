@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StrStoreItemNamePlural implements Operation {
+/**
+ *   (str_store_item_name_plural,<string_register>,<item_id>),
+ */
+public class StrStoreItemNamePlural implements Operation{
 
     private Variable stringRegister;
     private Variable itemId;

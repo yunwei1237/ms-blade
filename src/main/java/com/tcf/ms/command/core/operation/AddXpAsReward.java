@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class AddXpAsReward implements Operation {
+/**
+ *   (add_xp_as_reward,<value>),
+ */
+public class AddXpAsReward implements Operation{
 
     private Variable value;
 

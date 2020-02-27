@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class AgentIsAlive implements Operation ,Conditable{
+/**
+ *   (agent_is_alive,<agent_id>),
+ */
+public class AgentIsAlive implements Conditable{
 
     private Variable agentId;
 

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CurTableauAddMesh implements Operation {
+/**
+ *   (cur_tableau_add_mesh, <mesh_id>, <position_no>, <value_fixed_point>, <value_fixed_point>),  first value fixed point is the scale factor, second value fixed point is alpha. use 0 for default values
+ */
+public class CurTableauAddMesh implements Operation{
 
     private Variable meshId;
     private Variable positionNo;

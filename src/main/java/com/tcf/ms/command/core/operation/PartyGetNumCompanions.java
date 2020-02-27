@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartyGetNumCompanions implements Operation {
+/**
+ *   (party_get_num_companions,<destination>,<party_id>),
+ */
+public class PartyGetNumCompanions implements Operation{
 
     private Variable destination;
     private Variable partyId;

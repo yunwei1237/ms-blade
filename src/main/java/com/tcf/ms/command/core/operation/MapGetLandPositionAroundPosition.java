@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class MapGetLandPositionAroundPosition implements Operation ,Conditable{
+/**
+ *   (map_get_land_position_around_position,<dest_position_no>,<source_position_no>,<radius>),
+ */
+public class MapGetLandPositionAroundPosition implements Conditable{
 
     private Variable destPositionNo;
     private Variable sourcePositionNo;

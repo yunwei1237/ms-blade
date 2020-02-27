@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PositionCopyOrigin implements Operation {
+/**
+ *   (position_copy_origin,<position_no_1>,<position_no_2>), copies origin of position_no_2 to position_no_1
+ */
+public class PositionCopyOrigin implements Operation{
 
     private Variable positionNo1;
     private Variable positionNo2;

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetJumpMission implements Operation {
+/**
+ *   (set_jump_mission,<mission_template_id>),
+ */
+public class SetJumpMission implements Operation{
 
     private Variable missionTemplateId;
 

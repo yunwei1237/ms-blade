@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PropInstanceGetScale implements Operation {
+/**
+ *   (prop_instance_get_scale,<position_no>,<scene_prop_id>),
+ */
+public class PropInstanceGetScale implements Operation{
 
     private Variable positionNo;
     private Variable scenePropId;

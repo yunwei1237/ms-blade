@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class RestForHours implements Operation {
+/**
+ *   (rest_for_hours,<rest_period>,[time_speed],[remain_attackable]),
+ */
+public class RestForHours implements Operation{
 
     private Variable restPeriod;
     private Variable timeSpeed;

@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class Lt implements Operation ,Conditable{
+/**
+ *   less than		-- (lt,<value>,<value>),
+ */
+public class Lt implements Conditable{
 
     private Variable value;
     private Variable value2;

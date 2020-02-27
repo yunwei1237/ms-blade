@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class TroopRemoveItems implements Operation {
+/**
+ *   puts cost of items to reg0  (troop_remove_items,<troop_id>,<item_id>,<number>),
+ */
+public class TroopRemoveItems implements Operation{
 
     private Variable troopId;
     private Variable itemId;

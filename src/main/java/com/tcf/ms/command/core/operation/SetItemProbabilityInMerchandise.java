@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetItemProbabilityInMerchandise implements Operation {
+/**
+ *   (set_item_probability_in_merchandise,<itm_id>,<value>),
+ */
+public class SetItemProbabilityInMerchandise implements Operation{
 
     private Variable itmId;
     private Variable value;

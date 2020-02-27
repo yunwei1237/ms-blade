@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetMissionResult implements Operation {
+/**
+ *   (set_mission_result,<value>),
+ */
+public class SetMissionResult implements Operation{
 
     private Variable value;
 

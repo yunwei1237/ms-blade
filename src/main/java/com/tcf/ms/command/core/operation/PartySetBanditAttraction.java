@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class PartySetBanditAttraction implements Operation {
+/**
+ *   (party_set_bandit_attraction, <party_id>,<attaraction>),  set how attractive a target the party is for bandits (0..100)
+ */
+public class PartySetBanditAttraction implements Operation{
 
     private Variable partyId;
     private Variable attaraction;

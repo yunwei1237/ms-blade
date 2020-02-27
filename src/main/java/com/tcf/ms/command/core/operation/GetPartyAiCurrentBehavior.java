@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class GetPartyAiCurrentBehavior implements Operation {
+/**
+ *   (get_party_ai_current_behavior,<destination>,<party_id>),
+ */
+public class GetPartyAiCurrentBehavior implements Operation{
 
     private Variable destination;
     private Variable partyId;

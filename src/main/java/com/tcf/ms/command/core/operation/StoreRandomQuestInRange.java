@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class StoreRandomQuestInRange implements Operation {
+/**
+ *   (store_random_quest_in_range,<destination>,<lower_bound>,<upper_bound>),
+ */
+public class StoreRandomQuestInRange implements Operation{
 
     private Variable destination;
     private Variable lowerBound;

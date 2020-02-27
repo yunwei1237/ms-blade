@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class AgentIsAlly implements Operation ,Conditable{
+/**
+ *   (agent_is_ally,<agent_id>),
+ */
+public class AgentIsAlly implements Conditable{
 
     private Variable agentId;
 

@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class FactionSetName implements Operation {
+/**
+ *   (faction_set_name, <faction_id>, <string_id>),
+ */
+public class FactionSetName implements Operation{
 
     private Variable factionId;
     private Variable stringId;

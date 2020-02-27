@@ -4,7 +4,10 @@ import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 import com.tcf.ms.command.core.Conditable;
 
-public class PlayerHasItem implements Operation ,Conditable{
+/**
+ *   (player_has_item,<item_id>),
+ */
+public class PlayerHasItem implements Conditable{
 
     private Variable itemId;
 

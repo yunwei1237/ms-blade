@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class CurTableauSetCameraParameters implements Operation {
+/**
+ *   (cur_tableau_set_camera_parameters, <is_perspective>, <camera_width_times_1000>, <camera_height_times_1000>, <camera_near_times_1000>, <camera_far_times_1000>),
+ */
+public class CurTableauSetCameraParameters implements Operation{
 
     private Variable isPerspective;
     private Variable cameraWidthTimes1000;

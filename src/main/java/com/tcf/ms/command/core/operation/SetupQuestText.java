@@ -3,7 +3,10 @@ package com.tcf.ms.command.core.operation;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
 
-public class SetupQuestText implements Operation {
+/**
+ *   (setup_quest_text,<quest_id>),
+ */
+public class SetupQuestText implements Operation{
 
     private Variable questId;
 
