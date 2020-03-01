@@ -37,7 +37,7 @@ public class GeneratorCommandMethodUtilTest {
 
     @Test
     public void exportJavaFileList(){
-        util.exportJavaFileList("E:\\projects\\ms-blade\\src\\main\\java\\com\\tcf\\ms\\test");
+        util.exportJavaFileList("src\\main\\java\\com\\tcf\\ms\\test");
     }
 
     /**
@@ -45,11 +45,11 @@ public class GeneratorCommandMethodUtilTest {
      */
     @Test
     public void exportJavaFileList2(){
-        util.exportJavaFileList("E:\\projects\\ms-blade\\src\\main\\java\\com\\tcf\\ms\\command\\core\\operation");
+        util.exportJavaFileList("src\\main\\java\\com\\tcf\\ms\\command\\core\\operation");
     }
 
     @Test
     public void generatorHandle(){
-        util.exportHandle("E:\\projects\\ms-blade\\src\\main\\java\\com\\tcf\\ms\\command\\core\\object\\handle");
+        util.exportHandle("src\\main\\java\\com\\tcf\\ms\\command\\core\\object\\handle");
     }
 }

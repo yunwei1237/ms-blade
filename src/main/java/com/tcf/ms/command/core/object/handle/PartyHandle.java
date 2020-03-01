@@ -315,7 +315,7 @@ public class PartyHandle {
      *   (add_companion_party,<troop_id_hero>),
      * @return
      */
-    public Operation addCompanionParty(Variable troopIdHero){
+    public static Operation addCompanionParty(Variable troopIdHero){
         return new AddCompanionParty(troopIdHero);
     }
 
@@ -419,7 +419,7 @@ public class PartyHandle {
      *   (store_faction_of_party,<destination>),
      * @return
      */
-    public Operation storeFactionOfParty(Variable destination){
+    public static Operation storeFactionOfParty(Variable destination){
         return new StoreFactionOfParty(destination);
     }
 
@@ -523,7 +523,7 @@ public class PartyHandle {
      *   (party_can_join_as_prisoner),
      * @return
      */
-    public Conditable partyCanJoinAsPrisoner(){
+    public static Conditable partyCanJoinAsPrisoner(){
         return new PartyCanJoinAsPrisoner();
     }
 
@@ -531,7 +531,7 @@ public class PartyHandle {
      *   (set_party_battle_mode),
      * @return
      */
-    public Operation setPartyBattleMode(){
+    public static Operation setPartyBattleMode(){
         return new SetPartyBattleMode();
     }
 
@@ -539,7 +539,7 @@ public class PartyHandle {
      *   (party_template_get_slot,<destination>,<party_template_id>,<slot_no>),
      * @return
      */
-    public Operation partyTemplateGetSlot(Variable destination,PartyTemplate partyTemplate,Variable slotNo){
+    public static Operation partyTemplateGetSlot(Variable destination,PartyTemplate partyTemplate,Variable slotNo){
         return new PartyTemplateGetSlot(destination,partyTemplate.getVar(),slotNo);
     }
 
@@ -555,7 +555,7 @@ public class PartyHandle {
      *   (add_party_note_tableau_mesh,<troop_id>,<tableau_material_id>),
      * @return
      */
-    public Operation addPartyNoteTableauMesh(Troop troop,TableauMaterial tableauMaterial){
+    public static Operation addPartyNoteTableauMesh(Troop troop,TableauMaterial tableauMaterial){
         return new AddPartyNoteTableauMesh(troop.getVar(),tableauMaterial.getVar());
     }
 
@@ -603,7 +603,7 @@ public class PartyHandle {
      *   (encountered_party_is_attacker),
      * @return
      */
-    public Conditable encounteredPartyIsAttacker(){
+    public static Conditable encounteredPartyIsAttacker(){
         return new EncounteredPartyIsAttacker();
     }
 
@@ -651,7 +651,7 @@ public class PartyHandle {
      *   (store_random_party_in_range,<destination>,<lower_bound>,<upper_bound>),
      * @return
      */
-    public Operation storeRandomPartyInRange(Variable destination,Variable lowerBound,Variable upperBound){
+    public static Operation storeRandomPartyInRange(Variable destination,Variable lowerBound,Variable upperBound){
         return new StoreRandomPartyInRange(destination,lowerBound,upperBound);
     }
 
@@ -683,7 +683,7 @@ public class PartyHandle {
      *   (main_party_has_troop,<troop_id>),
      * @return
      */
-    public Conditable mainPartyHasTroop(Troop troop){
+    public static Conditable mainPartyHasTroop(Troop troop){
         return new MainPartyHasTroop(troop.getVar());
     }
 
@@ -715,7 +715,7 @@ public class PartyHandle {
      *   (store_encountered_party,<destination>),
      * @return
      */
-    public Operation storeEncounteredParty(Variable destination){
+    public static Operation storeEncounteredParty(Variable destination){
         return new StoreEncounteredParty(destination);
     }
 
@@ -723,7 +723,7 @@ public class PartyHandle {
      *   fails if no party exists with tempolate_id (expensive)  (store_random_party_of_template,<destination>,<party_template_id>),
      * @return
      */
-    public Operation storeRandomPartyOfTemplate(Variable destination,PartyTemplate partyTemplate){
+    public static Operation storeRandomPartyOfTemplate(Variable destination,PartyTemplate partyTemplate){
         return new StoreRandomPartyOfTemplate(destination,partyTemplate.getVar());
     }
 
@@ -747,7 +747,7 @@ public class PartyHandle {
      *   (party_join),
      * @return
      */
-    public Operation partyJoin(){
+    public static Operation partyJoin(){
         return new PartyJoin();
     }
 
@@ -755,7 +755,7 @@ public class PartyHandle {
      *   (store_encountered_party2,<destination>),
      * @return
      */
-    public Operation storeEncounteredParty2(Variable destination){
+    public static Operation storeEncounteredParty2(Variable destination){
         return new StoreEncounteredParty2(destination);
     }
 
@@ -787,7 +787,7 @@ public class PartyHandle {
      *   (party_template_slot_eq,<party_template_id>,<slot_no>,<value>),
      * @return
      */
-    public Conditable partyTemplateSlotEq(PartyTemplate partyTemplate,Variable slotNo,Variable value){
+    public static Conditable partyTemplateSlotEq(PartyTemplate partyTemplate,Variable slotNo,Variable value){
         return new PartyTemplateSlotEq(partyTemplate.getVar(),slotNo,value);
     }
 
@@ -811,7 +811,7 @@ public class PartyHandle {
      *   (party_template_set_slot,<party_template_id>,<slot_no>,<value>),
      * @return
      */
-    public Operation partyTemplateSetSlot(PartyTemplate partyTemplate,Variable slotNo,Variable value){
+    public static Operation partyTemplateSetSlot(PartyTemplate partyTemplate,Variable slotNo,Variable value){
         return new PartyTemplateSetSlot(partyTemplate.getVar(),slotNo,value);
     }
 
@@ -819,7 +819,7 @@ public class PartyHandle {
      *   (party_template_slot_ge,<party_template_id>,<slot_no>,<value>),
      * @return
      */
-    public Conditable partyTemplateSlotGe(PartyTemplate partyTemplate,Variable slotNo,Variable value){
+    public static Conditable partyTemplateSlotGe(PartyTemplate partyTemplate,Variable slotNo,Variable value){
         return new PartyTemplateSlotGe(partyTemplate.getVar(),slotNo,value);
     }
 
@@ -827,7 +827,7 @@ public class PartyHandle {
      *   (party_join_as_prisoner),
      * @return
      */
-    public Operation partyJoinAsPrisoner(){
+    public static Operation partyJoinAsPrisoner(){
         return new PartyJoinAsPrisoner();
     }
 
@@ -891,7 +891,7 @@ public class PartyHandle {
      *   (set_party_creation_random_limits, <min_value>, <max_value>), (values should be between 0, 100)
      * @return
      */
-    public Operation setPartyCreationRandomLimits(Variable minValue,Variable maxValue){
+    public static Operation setPartyCreationRandomLimits(Variable minValue,Variable maxValue){
         return new SetPartyCreationRandomLimits(minValue,maxValue);
     }
 
@@ -899,7 +899,7 @@ public class PartyHandle {
      *   (agent_get_party_id,<destination>,<agent_id>),
      * @return
      */
-    public Operation agentGetPartyId(Variable destination,Agent agent){
+    public static Operation agentGetPartyId(Variable destination,Agent agent){
         return new AgentGetPartyId(destination,agent.getVar());
     }
 

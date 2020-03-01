@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class GeneratorOperationMethodUtil {
 
-    private String operationFile = "E:\\projects\\ms-blade\\src\\main\\resources\\ModuleSystem\\header_operations.py";
+    private String operationFile = "ModuleSystem/header_operations.py";
 
     public GeneratorOperationMethodUtil() {
     }
@@ -211,6 +211,11 @@ public class GeneratorOperationMethodUtil {
         return  result;
     }
 
+    /**
+     * 获得命令集合，也就是operation.py的文件末尾配置信息
+     * @param text
+     * @return
+     */
     public Map<String,List<String>> getOperationCollection(String text){
         Map<String,List<String>> result = new HashMap<>();
         String[] types = {LHS_OPERATIONS,GLOBAL_LHS_OPERATIONS,CAN_FAIL_OPERATIONS};
@@ -232,7 +237,12 @@ public class GeneratorOperationMethodUtil {
         return result;
     }
 
-    private String changeParam(Command.Param param){
+    /**
+     * 将参数转换成字符串
+     * @param param
+     * @return
+     */
+    private String changeParamToStr(Command.Param param){
         //重复名称处理
         Map<String,Integer> cache = new HashMap<>();
         //全部生成小驼峰命名
@@ -256,12 +266,20 @@ public class GeneratorOperationMethodUtil {
     }
 
     private List<String> changeParams(List<Command.Param> params){
-        return params.stream().map(param -> this.changeParam(param)).collect(Collectors.toList());
+        return params.stream().map(param -> this.changeParamToStr(param)).collect(Collectors.toList());
     }
 
 
+    /**
+     * 将操作指令生成类文件
+     * @param operation
+     * @param classPackage
+     * @param conditionCommands
+     * @return
+     */
     private String generateJavaFile(Command operation, String classPackage, List<String> conditionCommands){
 
+        //特殊指令的处理
         if("neg".equals(operation.getOperationName())){
             return String.format("package %s;\n" +
                     "\n" +
@@ -324,7 +342,7 @@ public class GeneratorOperationMethodUtil {
                     "}",classPackage,operation.getNote());
         }
 
-
+        //普通操作指令的处理
         String temp = "package %s;\n" +
                 "\n" +
                 "import com.tcf.ms.command.Operation;\n" +
@@ -518,7 +536,6 @@ public class GeneratorOperationMethodUtil {
                 ,"party_prisoner_stack_get_troop_id"
                 ,"party_count_members_of_type"
                 ,"add_companion_party"
-                ,"main_party_has_troop"
                 ,"store_troop_count_prisoners"
                 ,"store_troop_count_companions"
         )));
@@ -568,6 +585,14 @@ public class GeneratorOperationMethodUtil {
 
     private static List<String> slotNams = Arrays.asList("agent","faction","item","party","party_template","quest","scene","troop");
 
+    /**
+     * 生成各种对象的操作类，如，party,troop,item等等
+     * @param handle
+     * @param commands
+     * @param conditionCommands
+     * @param classPackage
+     * @return
+     */
     public String generatorHandle(Handle handle,List<Command> commands,List<String> conditionCommands,String classPackage){
         String format = "package %s;\n"+
                 "\n"+
@@ -595,7 +620,7 @@ public class GeneratorOperationMethodUtil {
                     "     * @return\n" +
                     "     */\n" +
                     "%s"+
-                    "    public %s %s(%s){\n" +
+                    "    public%s %s %s(%s){\n" +
                     "        return new %s(%s);\n" +
                     "    }\n";
 
@@ -627,10 +652,11 @@ public class GeneratorOperationMethodUtil {
                     });
                 }
                 if(!isget.get()){
-                    formalParameter.append(String.format("Variable %s,",this.changeParam(param)));
-                    actualParameter.append(String.format("%s,",this.changeParam(param)));
+                    formalParameter.append(String.format("Variable %s,",this.changeParamToStr(param)));
+                    actualParameter.append(String.format("%s,",this.changeParamToStr(param)));
                 }
             }));
+            String isStatic = !command.params.stream().anyMatch((param -> param.paramName.contains(handle.paramKeyword))) ? " static" : "";
             String isDeprecated = command.isDeprecated ? "    @Deprecated\n" : "";
             String methodObjName = CaseUtil.largeCamelCase(command.operationName);
             importSets.add(String.format("import com.tcf.ms.command.core.operation.%s;", methodObjName));
@@ -638,7 +664,7 @@ public class GeneratorOperationMethodUtil {
             String actualParam = actualParameter.toString();
             //去除已经删除的方法
             if(!command.isDeleted)
-                methods.add(String.format(methodFormat,note,isDeprecated,returnType,methodName,formalParam.contains(",") ? formalParam.substring(0,formalParam.length() - 1) : formalParam,methodObjName,actualParam.contains(",") ? actualParam.substring(0,actualParam.length() - 1) : actualParam));
+                methods.add(String.format(methodFormat,note,isDeprecated,isStatic,returnType,methodName,formalParam.contains(",") ? formalParam.substring(0,formalParam.length() - 1) : formalParam,methodObjName,actualParam.contains(",") ? actualParam.substring(0,actualParam.length() - 1) : actualParam));
         }));
 
         String className = CaseUtil.largeCamelCase(handle.getKeyword()) + "Handle";
@@ -691,8 +717,8 @@ public class GeneratorOperationMethodUtil {
                         || name.contains(handle.keyword)
                         || oper.params.stream().map(Command.Param::getParamName).anyMatch((paramName->paramName.contains(handle.paramKeyword)))
                 ){
-                    //检测是否有需要排除的指令，如果没有才进行添加
-                    if(!handle.excludes.contains(name)) {
+                    //检测是否有需要排除的指令,没有被删除的，如果没有才进行添加
+                    if(!handle.excludes.contains(name) && !oper.isDeleted) {
                         commands.add(oper);
                     }
                 }

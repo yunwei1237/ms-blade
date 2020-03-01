@@ -120,7 +120,7 @@ public class AgentHandle {
      *   (spawn_agent,<troop_id>), (stores agent_id in reg0)
      * @return
      */
-    public Operation spawnAgent(Troop troop){
+    public static Operation spawnAgent(Troop troop){
         return new SpawnAgent(troop.getVar());
     }
 
@@ -232,7 +232,7 @@ public class AgentHandle {
      *   (agent_set_speed_limit,<agent_id>,<speed_limit(kilometers/hour)>),  Affects AI only 
      * @return
      */
-    public Operation agentSetSpeedLimit(){
+    public static Operation agentSetSpeedLimit(){
         return new AgentSetSpeedLimit();
     }
 
@@ -280,7 +280,7 @@ public class AgentHandle {
      *   (mission_cam_clear_target_agent)
      * @return
      */
-    public Operation missionCamClearTargetAgent(){
+    public static Operation missionCamClearTargetAgent(){
         return new MissionCamClearTargetAgent();
     }
 
