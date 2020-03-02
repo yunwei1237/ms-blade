@@ -41,6 +41,7 @@ import com.tcf.ms.command.core.operation.TroopSetType;
 import com.tcf.ms.command.core.operation.TroopLootTroop;
 import com.tcf.ms.command.core.object.Item;
 import com.tcf.ms.command.core.operation.TroopGetType;
+import com.tcf.ms.command.core.operation.MainPartyHasTroop;
 import com.tcf.ms.command.core.operation.SpawnAgent;
 import com.tcf.ms.command.core.operation.TroopSetInventorySlotModifier;
 import com.tcf.ms.command.core.operation.TroopAddItems;
@@ -533,6 +534,14 @@ public class TroopHandle {
      */
     public Operation addFactionNoteTableauMesh(TableauMaterial tableauMaterial){
         return new AddFactionNoteTableauMesh(this.variable,tableauMaterial.getVar());
+    }
+
+    /**
+     *   (main_party_has_troop,<troop_id>),
+     * @return
+     */
+    public Conditable mainPartyHasTroop(){
+        return new MainPartyHasTroop(this.variable);
     }
 
     /**
