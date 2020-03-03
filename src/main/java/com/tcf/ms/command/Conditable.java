@@ -1,4 +1,4 @@
-package com.tcf.ms.command.core;
+package com.tcf.ms.command;
 
 import com.tcf.ms.command.Operation;
 

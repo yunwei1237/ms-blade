@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Matcher;
@@ -150,6 +149,11 @@ public class GeneratorOperationMethodUtil {
                         paramList.add(new Command.Param().setParamName("party_id").setOption(false));
                         paramList.add(new Command.Param().setParamName("side").setOption(false));
                         operation.setParams(paramList);
+                    }else if("agent_set_speed_limit".equals(operationName)){
+                        List<Command.Param> paramList = new ArrayList<>();
+                        paramList.add(new Command.Param().setParamName("agent_id"));
+                        paramList.add(new Command.Param().setParamName("speed_limit"));
+                        operation.setParams(paramList);
                     }else {
                         //生成语法匹配符
                         //Pattern grammerPattern = Pattern.compile(String.format("\\(\\s*%s(\\s*,\\s*.+\\s*)?\\),?",operationName));
@@ -164,7 +168,7 @@ public class GeneratorOperationMethodUtil {
                                 //单独处理【change_screen_exchange_members】指令
                                 if ("change_screen_exchange_members".equals(operation.getOperationName())) {
                                     paramList.add(new Command.Param().setParamName("exchange_leader").setOption(true));
-                                } else {
+                                }else {
                                     //去掉开头的逗号
                                     String params = paramsGroup.substring(1);
                                     String[] items = params.split(",");
@@ -238,37 +242,15 @@ public class GeneratorOperationMethodUtil {
     }
 
     /**
-     * 将参数转换成字符串
-     * @param param
+     * 将参数集合进行参数优化
+     * @param params
      * @return
      */
-    private String changeParamToStr(Command.Param param){
-        //重复名称处理
-        Map<String,Integer> cache = new HashMap<>();
-        //全部生成小驼峰命名
-        String paramName = param.getParamName();
-        //处理参数中包含特殊字符（-，/）
-        if(paramName.contains("-")){
-            paramName = paramName.substring(0,paramName.indexOf("-"));
-        }else if(paramName.contains("/")){
-            paramName = paramName.substring(0,paramName.indexOf("/"));
-        }else if(paramName.contains(" ")){
-            paramName = paramName.replace(" ","_");
-        }
-        String str = CaseUtil.smallCamelCase(paramName);
-        if(cache.containsKey(str)) {
-            cache.computeIfPresent(str, (key, val) -> val + 1);
-        }else{
-            cache.put(str, 1);
-        }
-        Integer index = cache.get(str);
-        return String.format("%s%s",str,index == 1 ? "" : index);
+    public List<String> changeParams(List<Command.Param> params){
+        //创建参数优化处理器
+        ParamHandle paramHandle = new ParamHandle();
+        return params.stream().map(param -> paramHandle.handle(param.paramName)).collect(Collectors.toList());
     }
-
-    private List<String> changeParams(List<Command.Param> params){
-        return params.stream().map(param -> this.changeParamToStr(param)).collect(Collectors.toList());
-    }
-
 
     /**
      * 将操作指令生成类文件
@@ -284,7 +266,7 @@ public class GeneratorOperationMethodUtil {
             return String.format("package %s;\n" +
                     "\n" +
                     "import com.tcf.ms.command.Operation;\n" +
-                    "import com.tcf.ms.command.core.Conditable;\n" +
+                    "import com.tcf.ms.command.Conditable;\n" +
                     "\n" +
                     "/**\n" +
                     " * %s\n" +
@@ -313,7 +295,7 @@ public class GeneratorOperationMethodUtil {
             return String.format("package %s;\n" +
                     "\n" +
                     "import com.tcf.ms.command.Operation;\n" +
-                    "import com.tcf.ms.command.core.Conditable;\n" +
+                    "import com.tcf.ms.command.Conditable;\n" +
                     "\n" +
                     "/**\n" +
                     " * %s\n" +
@@ -377,7 +359,7 @@ public class GeneratorOperationMethodUtil {
         String format = CollectionUtil.isEmpty(params) ? commandName : commandName + "," + params.stream().map(param -> "%s").collect(Collectors.joining(","));;
         String deprecated = operation.isDeprecated() ? "@Deprecated\n" : "";
         String condition = conditionCommands.contains(commandName) ? "Conditable" : "Operation";
-        String conditionImport = conditionCommands.contains(commandName) ? "import com.tcf.ms.command.core.Conditable;\n" : "";
+        String conditionImport = conditionCommands.contains(commandName) ? "import com.tcf.ms.command.Conditable;\n" : "";
 
         return String.format(temp,classPackage,conditionImport,operation.getNote(),deprecated,className,condition,properties,className,params1,assign,format,params2);
     }
@@ -470,6 +452,9 @@ public class GeneratorOperationMethodUtil {
         log.info("生成完成");
     }
 
+    /**
+     * 操作类的配置
+     */
     private static List<Handle> handles = new ArrayList<>();
     static {
         //参数处理
@@ -507,47 +492,171 @@ public class GeneratorOperationMethodUtil {
                 new Handle.HandleParam().setParamName("game_key_id"),
                 new Handle.HandleParam().setParamName("party_template_id"),
                 new Handle.HandleParam().setParamName("skill_id"),
+                new Handle.HandleParam().setParamName("string_register").setReplaceParamType("SregVariable").setReplaceParamName("stringRegister"),
+                new Handle.HandleParam().setParamName("position_no").setReplaceParamType("PosVariable").setReplaceParamName("position"),
                 new Handle.HandleParam().setParamName("order_id")
         );
         //处理类的声明
 
         //队伍操作
-        handles.add(new Handle().setKeyword("party").setParamKeyword("party_id").setParams(handleParams).setExcludes(Arrays.asList(
-                "distribute_party_among_party_group"
-                ,"party_can_join"
-        )));
+        handles.add(new Handle("party","party_id")
+                .setKeywords(Arrays.asList("party"))
+                .setParamKeywords(Arrays.asList("party_id"))
+                .setCanSlot(true)
+                .setParams(handleParams)
+                //排除
+                .setExcludes(Arrays.asList(
+                    "distribute_party_among_party_group"
+                    ,"party_can_join"
+                    ,"main_party_has_troop"
+                    ,"agent_get_party_id"
+
+                    ,"party_set_slot"
+                    ,"party_get_slot"
+                    ,"party_slot_eq"
+                    ,"party_slot_ge"
+                )));
         //兵种操作
-        handles.add(new Handle().setKeyword("troop").setParamKeyword("troop_id").setParams(handleParams).setExcludes(Arrays.asList(
-                "party_add_prisoners"
-                ,"party_remove_members"
-                ,"party_wound_members"
-                ,"party_remove_members_wounded_first"
-                ,"party_add_leader"
-                ,"party_prisoner_stack_get_troop_dna"
-                ,"party_stack_get_troop_id"
-                ,"party_force_add_prisoners"
-                ,"party_count_companions_of_type"
-                ,"party_remove_prisoners"
-                ,"party_stack_get_troop_dna"
-                ,"party_force_add_members"
-                ,"remove_member_from_party"
-                ,"party_count_prisoners_of_type"
-                ,"party_add_members"
-                ,"party_prisoner_stack_get_troop_id"
-                ,"party_count_members_of_type"
-                ,"add_companion_party"
-                ,"store_troop_count_prisoners"
-                ,"store_troop_count_companions"
-        )));
+        handles.add(new Handle("troop","troop_id")
+                .setKeywords(Arrays.asList("troop"))
+                .setParamKeywords(Arrays.asList("troop_id"))
+                .setCanSlot(true)
+                .setParams(handleParams)
+                //排除
+                .setExcludes(Arrays.asList(
+                    "party_add_prisoners"
+                    ,"party_remove_members"
+                    ,"party_wound_members"
+                    ,"party_remove_members_wounded_first"
+                    ,"party_add_leader"
+                    ,"party_prisoner_stack_get_troop_dna"
+                    ,"party_stack_get_troop_id"
+                    ,"party_force_add_prisoners"
+                    ,"party_count_companions_of_type"
+                    ,"party_remove_prisoners"
+                    ,"party_stack_get_troop_dna"
+                    ,"party_force_add_members"
+                    ,"remove_member_from_party"
+                    ,"party_count_prisoners_of_type"
+                    ,"party_add_members"
+                    ,"party_prisoner_stack_get_troop_id"
+                    ,"party_count_members_of_type"
+                    ,"add_companion_party"
+                    ,"store_troop_count_prisoners"
+                    ,"store_troop_count_companions"
+
+                    ,"troop_set_slot"
+                    ,"troop_get_slot"
+                    ,"troop_slot_eq"
+                    ,"troop_slot_ge"
+                )));
         //代理操作
-        handles.add(new Handle().setKeyword("agent").setParamKeyword("agent_id").setParams(handleParams).setExcludes(Arrays.asList(
-                "get_player_agent_own_troop_kill_count"
-                ,"team_set_leader"
-                ,"get_player_agent_no"
-                ,"get_player_agent_kill_count"
-                ,"store_conversation_agent"
-                ,"try_for_agents"
-        )));
+        handles.add(new Handle("agent","agent_id")
+                .setKeywords(Arrays.asList("agent"))
+                .setParamKeywords(Arrays.asList("agent_id"))
+                .setCanSlot(true)
+                .setParams(handleParams)
+                //排除
+                .setExcludes(Arrays.asList(
+                    "get_player_agent_own_troop_kill_count"
+                    ,"team_set_leader"
+                    ,"get_player_agent_no"
+                    ,"get_player_agent_kill_count"
+                    ,"store_conversation_agent"
+                    ,"try_for_agents"
+
+                    ,"agent_set_slot"
+                    ,"agent_get_slot"
+                    ,"agent_slot_eq"
+                    ,"agent_slot_ge"
+            )));
+        //物品操作
+        handles.add(new Handle("item","item_id")
+                .setKeywords(Arrays.asList("item"))
+                .setParamKeywords(Arrays.asList("item_id"))
+                .setCanSlot(true)
+                .setParams(handleParams)
+                //排除
+                .setExcludes(Arrays.asList(
+                    "item_set_slot"
+                    ,"item_get_slot"
+                    ,"item_slot_eq"
+                    ,"item_slot_ge"
+
+                    ,"agent_has_item_equipped"
+                    ,"troop_add_items"
+                    ,"player_has_item"
+                    ,"troop_add_item"
+                    ,"troop_remove_items"
+                    ,"troop_has_item_equipped"
+                    ,"troop_remove_item"
+            )));
+        //阵营操作
+        handles.add(new Handle("faction","faction_id")
+                .setKeywords(Arrays.asList("faction"))
+                .setParamKeywords(Arrays.asList("faction_id"))
+                .setCanSlot(true)
+                .setParams(handleParams)
+                //排除
+                .setExcludes(Arrays.asList(
+                        "party_set_faction"
+                        ,"troop_set_faction"
+
+                        ,"faction_set_slot"
+                        ,"faction_get_slot"
+                        ,"faction_slot_eq"
+                        ,"faction_slot_ge"
+                )));
+
+        //队伍模板操作
+        handles.add(new Handle("party_template","party_template_id")
+                .setKeywords(Arrays.asList("party_template"))
+                .setParamKeywords(Arrays.asList("party_template_id"))
+                .setCanSlot(true)
+                .setParams(handleParams)
+                //排除
+                .setExcludes(Arrays.asList(
+                        "store_num_parties_destroyed_by_player"
+                        ,"party_add_template"
+
+                        ,"party_template_set_slot"
+                        ,"party_template_get_slot"
+                        ,"party_template_slot_eq"
+                        ,"party_template_slot_ge"
+                )));
+
+        //任务模板操作
+        handles.add(new Handle("quest","quest_id")
+                .setKeywords(Arrays.asList("quest"))
+                .setParamKeywords(Arrays.asList("quest_id"))
+                .setCanSlot(true)
+                .setParams(handleParams)
+                //排除
+                .setExcludes(Arrays.asList(
+                        "quest_set_slot"
+                        ,"quest_get_slot"
+                        ,"quest_slot_eq"
+                        ,"quest_slot_ge"
+                )));
+        //场景操作
+        handles.add(new Handle("scene","scene_id")
+                .setKeywords(Arrays.asList("scene"))
+                .setParamKeywords(Arrays.asList("scene_id"))
+                .setCanSlot(true)
+                .setParams(handleParams)
+                //排除
+                .setExcludes(Arrays.asList(
+                        "scene_set_slot"
+                        ,"scene_get_slot"
+                        ,"scene_slot_eq"
+                        ,"scene_slot_ge"
+                )));
+//        //玩家操作
+        handles.add(new Handle("player").setKeywords(Arrays.asList("player","main_party")).setParams(handleParams)
+                //排除
+                .setExcludes(Arrays.asList(
+
+                )));
     }
 
     /**
@@ -583,17 +692,12 @@ public class GeneratorOperationMethodUtil {
         sets.forEach(System.out::println);
     }
 
-    private static List<String> slotNams = Arrays.asList("agent","faction","item","party","party_template","quest","scene","troop");
-
     /**
      * 生成各种对象的操作类，如，party,troop,item等等
-     * @param handle
-     * @param commands
-     * @param conditionCommands
-     * @param classPackage
+     * @param info
      * @return
      */
-    public String generatorHandle(Handle handle,List<Command> commands,List<String> conditionCommands,String classPackage){
+    private String generatorHandle(HandleInfo info){
         String format = "package %s;\n"+
                 "\n"+
                 "%s"+
@@ -610,11 +714,16 @@ public class GeneratorOperationMethodUtil {
                 "}";
         Set<String> importSets = new HashSet<>();
         importSets.add("import com.tcf.ms.command.Operation;");
-        importSets.add("import com.tcf.ms.command.core.Conditable;");
+        importSets.add("import com.tcf.ms.command.Conditable;");
         importSets.add("import com.tcf.ms.command.core.base.var.Variable;");
         importSets.add("import com.tcf.ms.command.core.base.var.StringVariable;");
         List<String> methods = new ArrayList<>();
-        commands.stream().forEach((command -> {
+
+        List<HandleInfo.CommandInfo> staticCommandInfos = info.getStaticCommandInfos();
+        List<HandleInfo.CommandInfo> commonCommandInfos = info.getCommonCommandInfos();
+        //将两个命令集合合并
+        staticCommandInfos.addAll(commonCommandInfos);
+        staticCommandInfos.forEach((commandInfo -> {
             String methodFormat = "    /**\n" +
                     "     * %s\n" +
                     "     * @return\n" +
@@ -623,69 +732,41 @@ public class GeneratorOperationMethodUtil {
                     "    public%s %s %s(%s){\n" +
                     "        return new %s(%s);\n" +
                     "    }\n";
-
+            Command command = commandInfo.command;
             String note = command.note;
-            String returnType = conditionCommands.contains(command.operationName)? "Conditable" : "Operation";
+            String returnType = commandInfo.returnTypeName;
             String methodName = CaseUtil.smallCamelCase(command.operationName);
-            StringBuffer formalParameter = new StringBuffer();
-            StringBuffer actualParameter = new StringBuffer();
-            command.params.forEach((param -> {
-                AtomicBoolean isget = new AtomicBoolean(false);
-                if(handle.params != null) {
-                    handle.params.forEach(handleParam -> {
-                        //如果处理参数中包含当前参数，也就是当前参数需要进行改变
-                        if (handleParam.paramName.contains(param.paramName)) {
-                            //如果当前参数不是即将生成类中已经有的变量，就正常生成参数信息
-                            if(!param.paramName.contains(handle.paramKeyword)) {
-                                formalParameter.append(String.format("%s %s,", handleParam.getType(), handleParam.getParam(param.paramName)));
-                                actualParameter.append(String.format("%s.getVar(),", handleParam.getParam(param.paramName)));
-
-                                importSets.add(String.format("import com.tcf.ms.command.core.object.%s;", handleParam.getType()));
-
-                            }else{
-                                //如果是类中已经有的参数，直接使用就行了，不需要方法再传入
-                                actualParameter.append("this.variable,");
-                            }
-                            isget.set(true);
-                            return;
-                        }
-                    });
-                }
-                if(!isget.get()){
-                    formalParameter.append(String.format("Variable %s,",this.changeParamToStr(param)));
-                    actualParameter.append(String.format("%s,",this.changeParamToStr(param)));
-                }
-            }));
-            String isStatic = !command.params.stream().anyMatch((param -> param.paramName.contains(handle.paramKeyword))) ? " static" : "";
+            String isStatic = commandInfo.isStatic ? " static" : "";
             String isDeprecated = command.isDeprecated ? "    @Deprecated\n" : "";
             String methodObjName = CaseUtil.largeCamelCase(command.operationName);
-            importSets.add(String.format("import com.tcf.ms.command.core.operation.%s;", methodObjName));
-            String formalParam = formalParameter.toString();
-            String actualParam = actualParameter.toString();
+            String formalParam = String.join(",",commandInfo.formalParams);
+            String actualParam = String.join(",",commandInfo.actualParams);
             //去除已经删除的方法
-            if(!command.isDeleted)
-                methods.add(String.format(methodFormat,note,isDeprecated,isStatic,returnType,methodName,formalParam.contains(",") ? formalParam.substring(0,formalParam.length() - 1) : formalParam,methodObjName,actualParam.contains(",") ? actualParam.substring(0,actualParam.length() - 1) : actualParam));
+            if(!command.isDeleted) {
+                importSets.addAll(commandInfo.imports);
+                methods.add(String.format(methodFormat, note, isDeprecated, isStatic, returnType, methodName, formalParam, methodObjName, actualParam));
+            }
         }));
 
-        String className = CaseUtil.largeCamelCase(handle.getKeyword()) + "Handle";
+        String className = CaseUtil.largeCamelCase(info.className) + "Handle";
 
+        //方法代码进行融合
         StringBuffer methodObjs = new StringBuffer();
         methods.forEach((method->{
             methodObjs.append(method + "\n");
         }));
 
-
         String slotFormat = "";
-        if(slotNams.contains(handle.keyword)){
+        if(info.canSlot){
             slotFormat = String.format("    public SlotOperation slot(){\n" +
-                    "        return new %sSlot(this.variable);\n" +
-                    "    }\n\n",CaseUtil.largeCamelCase(handle.keyword));
+                    "        return new %s(this.variable);\n" +
+                    "    }\n\n",CaseUtil.largeCamelCase(info.className) + "Slot");
             importSets.add("import com.tcf.ms.command.core.object.handle.slot.SlotOperation;");
-            importSets.add(String.format("import com.tcf.ms.command.core.object.handle.slot.%sSlot;", CaseUtil.largeCamelCase(handle.keyword)));
+            importSets.add(String.format("import com.tcf.ms.command.core.object.handle.slot.%s;", CaseUtil.largeCamelCase(info.className) + "Slot"));
         }
 
         String importStr = importSets.stream().collect(Collectors.joining("\n"));
-        return String.format(format,classPackage,importStr,className,className,slotFormat,methodObjs);
+        return String.format(format,info.classPackage,importStr,className,className,slotFormat,methodObjs);
     }
 
     /**
@@ -693,46 +774,172 @@ public class GeneratorOperationMethodUtil {
      * @param targetDir
      */
     public void exportHandle(String targetDir){
+        log.info("开始导出handle类");
         Map<String, Command> operations = getOperations(FileUtil.readLines(this.operationFile, "UTF-8"));
+        log.info("操作指令解析完毕");
         Map<String, List<String>> operationCollection = getOperationCollection(FileUtil.readString(this.operationFile, "UTF-8"));
-
+        log.info("特殊操作指令集合解析完毕");
         File targetDirFile = new File(targetDir);
         if(!targetDirFile.exists()){
-            try {
-                targetDirFile.createNewFile();
-            } catch (IOException e) {
-                log.error("创建文件夹时出错：{}",targetDir);
-            }
+            targetDirFile.mkdir();
+            log.info("创建文件夹：{}",targetDir);
         }
-
+        List<Command> useCommands = new ArrayList<>();
+        //处理handle的配置
         handles.forEach(handle -> {
-            List<Command> commands = new ArrayList<>();
-            operations.forEach((name,oper)->{
-
-                //添加到集合中的三种条件：
-                //1.includes代表一定要添加的
-                //2.指令的名字中包含关键字的
-                //3.参数的名字中包含关键字的
-                if(handle.includes.contains(name)
-                        || name.contains(handle.keyword)
-                        || oper.params.stream().map(Command.Param::getParamName).anyMatch((paramName->paramName.contains(handle.paramKeyword)))
-                ){
-                    //检测是否有需要排除的指令,没有被删除的，如果没有才进行添加
-                    if(!handle.excludes.contains(name) && !oper.isDeleted) {
-                        commands.add(oper);
-                    }
-                }
-            });
-            String javaPath = String.format("%s\\%sHandle.java",targetDir,CaseUtil.largeCamelCase(handle.keyword));
-            File javaFile = new File(javaPath);
-            if(javaFile.exists()){
-                javaFile.delete();
-                log.info("删除已经存在的文件：{}",javaPath);
-            }
-            String javaText = generatorHandle(handle,commands,operationCollection.get(CAN_FAIL_OPERATIONS),getClassPackage(targetDir));
-            FileUtil.writeString(javaText,javaFile,"UTF-8");
-            log.info("创建文件：{}",javaPath);
+            log.info("{}：处理配置类",handle.className);
+            //创建类文件
+            HandleInfo handleInfo = filterCommandInfo(operations, handle, operationCollection.get(CAN_FAIL_OPERATIONS), targetDir);
+            log.info("{}：生成数据对象", handle.className);
+            createHandleFile(handleInfo);
+            //记录已经生成的操作
+            useCommands.addAll(handleInfo.commands);
         });
+        List<Command> unuseCommands = getUnuseCommands(operations.values().stream().collect(Collectors.toList()), useCommands);
+        log.debug("没有使用的操作集合");
+        log.debug("数量：" + unuseCommands.size());
+        log.debug("=========================================================================");
+        unuseCommands.stream().map(command -> String.format("%s\t\t\t#%s",StringUtils.rightPad(command.operationName,40),command.grammar)).forEach(System.out::println);
+        log.debug("=========================================================================");
+
+    }
+
+    private List<Command> getUnuseCommands(List<Command> allCommands,List<Command> usedCommands){
+        List<Command> unuseCommands = new ArrayList<>();
+        List<String> usedCommandStrs = usedCommands.stream().map(comm -> comm.operationName).collect(Collectors.toList());
+        allCommands.forEach(command -> {
+            //如果已经使用的集合中不包含指令，说明该指令还没有使用
+            if(!usedCommandStrs.contains(command.operationName)){
+                unuseCommands.add(command);
+            }
+        });
+        return unuseCommands;
+    }
+
+
+    /**
+     * 创建类文件
+     * @param info
+     */
+    private void createHandleFile(HandleInfo info){
+        String javaPath = info.filePath;
+        File javaFile = new File(javaPath);
+        if(javaFile.exists()){
+            javaFile.delete();
+            log.info("删除已经存在的文件：{}",javaPath);
+        }
+        String javaText = generatorHandle(info);
+        log.info("{}：创建文件：{}",info.className,javaPath);
+        FileUtil.writeString(javaText,javaFile,"UTF-8");
+        log.info("{}：数据写入完毕",info.className,javaPath);
+    }
+
+    /**
+     * 过滤要处理的指令
+     * @param operations
+     * @param handle
+     * @return
+     */
+    private HandleInfo filterCommandInfo(Map<String, Command> operations,Handle handle,List<String> conditionCommands,String targetDir){
+        HandleInfo handleInfo = new HandleInfo();
+        List<Command> commands = new ArrayList<>();
+        operations.forEach((name,oper)->{
+            //添加到集合中的三种条件：
+            //1.includes代表一定要添加的
+            //2.指令的名字中包含关键字的
+            //3.参数的名字中包含关键字的
+            if(
+                    handle.includes.equals(name)
+                    || ListUtil.containsAny(name,handle.keywords)
+                    || ListUtil.intersectionContains(oper.params.stream().map(Command.Param::getParamName).collect(Collectors.toList()), handle.paramKeywords).size() > 0
+            ){
+                //需要排除的指令
+                // 1.已经删除的
+                // 2.已经排除的
+                if(!handle.excludes.contains(name) && !oper.isDeleted) {
+                    commands.add(oper);
+                }
+            }
+
+        });
+
+        handleInfo.setClassName(handle.className);
+        handleInfo.setCanSlot(handle.canSlot);
+        handleInfo.setCommands(commands);
+        handleInfo.setFilePath(String.format("%s\\%sHandle.java",targetDir,CaseUtil.largeCamelCase(handle.className)));
+        handleInfo.setClassPackage(getClassPackage(targetDir));
+
+        List<HandleInfo.CommandInfo> commonCommands = new ArrayList<>();
+        List<HandleInfo.CommandInfo> staticCommands = new ArrayList<>();
+        Set<String> imports = new HashSet<>();
+        //处理参数
+        commands.forEach((command -> {
+            HandleInfo.CommandInfo commandInfo = new HandleInfo.CommandInfo();
+
+            List<String> formalParams = new ArrayList<>();
+            List<String> actualParams = new ArrayList<>();
+
+            commandInfo.setCommandClassName(CaseUtil.largeCamelCase(command.operationName));
+            commandInfo.setMethodName(CaseUtil.smallCamelCase(command.operationName));
+            commandInfo.setReturnTypeName(conditionCommands.equals(command.operationName) ? "Conditable" : "Operation");
+
+            imports.add(String.format("import com.tcf.ms.command.core.operation.%s;",commandInfo.getCommandClassName()));
+            imports.add(String.format("import com.tcf.ms.command.%s;",commandInfo.getReturnTypeName()));
+            ParamHandle formalParamHandle = new ParamHandle();
+            ParamHandle actualParamHandle = new ParamHandle();
+
+            //保证this.variable只会使用一次
+            AtomicBoolean unusedVar = new AtomicBoolean(false);
+            command.params.forEach((param -> {
+                AtomicBoolean isget = new AtomicBoolean(false);
+                if(handle.params != null) {
+                    handle.params.forEach(handleParam -> {
+                        //如果处理参数中包含当前参数，也就是当前参数需要进行改变
+                        if (handleParam.paramName.equals(param.paramName)) {
+                            //如果当前参数不是即将生成类中已经有的变量，就正常生成参数信息
+                            if(!ListUtil.equalsAny(param.paramName,handle.paramKeywords) || unusedVar.get()) {
+                                formalParams.add(String.format("%s %s", handleParam.getType(), formalParamHandle.handle(handleParam.getParam(param.paramName))));
+                                actualParams.add(String.format("%s.getVar()", actualParamHandle.handle(handleParam.getParam(param.paramName))));
+                                if(handleParam.getType().endsWith("Variable")) {
+                                    imports.add(String.format("import com.tcf.ms.command.core.base.var.%s;", handleParam.getType()));
+                                }else{
+                                    imports.add(String.format("import com.tcf.ms.command.core.object.%s;", handleParam.getType()));
+                                }
+                            }else{
+                                //代表已经使用过了
+                                unusedVar.set(true);
+                                //如果是类中已经有的参数，直接使用就行了，不需要方法再传入
+                                actualParams.add("this.variable");
+                            }
+                            isget.set(true);
+                            return;
+                        }
+                    });
+                }
+                if(!isget.get()){
+                    formalParams.add(String.format("Variable %s",formalParamHandle.handle(param.paramName)));
+                    actualParams.add(String.format("%s",actualParamHandle.handle(param.paramName)));
+                }
+            }));
+            commandInfo.setActualParams(actualParams);
+            commandInfo.setFormalParams(formalParams);
+            commandInfo.setImports(imports);
+            commandInfo.setCommand(command);
+
+            //如果指令参数中包含，指定的参数，如，party_id,agent_id,item_id等等是普通方法，如果不包含的话，就是静态方法
+            if(command.params.stream().anyMatch((param -> param.paramName.equals(handle.paramName)))){
+                commandInfo.setStatic(false);
+                commonCommands.add(commandInfo);
+            }else{
+                commandInfo.setStatic(true);
+                staticCommands.add(commandInfo);
+            }
+
+
+        }));
+        handleInfo.setCommonCommandInfos(commonCommands);
+        handleInfo.setStaticCommandInfos(staticCommands);
+        return handleInfo;
     }
 
 
@@ -800,33 +1007,55 @@ public class GeneratorOperationMethodUtil {
     /**
      * 处理类模板
      */
+
     @Data
     @Accessors(chain = true)
     @ToString
     public static class Handle{
         /**
-         * 代表命令关键字
+         * handle的名称
          */
-        private String keyword;
+        private String className;
         /**
-         * 代表参数关键字
+         * 代表命令关键字，匹配任何一个关键字都可以
          */
-        private String paramKeyword;
+        private List<String> keywords;
         /**
-         * 进行参数修改
+         * 参数名称，代表当前对象的参数，如：Party的参数party_id,Agent的参数agent_id
+         */
+        private String paramName;
+        /**
+         * 代表参数关键字，匹配任何一个关键字都可以
+         */
+        private List<String> paramKeywords;
+        /**
+         * 参数的映射关系，以及处理功能
          */
         private List<HandleParam> params;
 
         /**
-         * 排除的指令
+         * 是否可以进行slot操作
+         */
+        private boolean canSlot;
+
+        /**
+         * 排除的指令（用于微调）
          */
         private List<String> excludes = new ArrayList<>();
 
         /**
-         * 包含的指令
+         * 包含的指令（用于微调）
          */
         private List<String> includes = new ArrayList<>();
 
+        public Handle(String className, String paramName) {
+            this.className = className;
+            this.paramName = paramName;
+        }
+
+        public Handle(String className) {
+            this(className,null);
+        }
         @Data
         @Accessors(chain = true)
         @ToString
@@ -879,6 +1108,109 @@ public class GeneratorOperationMethodUtil {
                 }
                 return CaseUtil.smallCamelCase(this.paramName.replace("_id",""));
             }
+        }
+    }
+
+    @Data
+    @Accessors(chain = true)
+    @ToString
+    public static class HandleInfo{
+        /**
+         * 生成对象的类名
+         */
+        private String className;
+        /**
+         * 类的包名
+         */
+        private String classPackage;
+        /**
+         * 生成的文件路径
+         */
+        private String filePath;
+        /**
+         * 是否可以进行slot操作
+         */
+        private boolean canSlot;
+        /**
+         * 要生成的指令集合
+         */
+        private List<Command> commands;
+        /**
+         * 要生成的指令信息(实例方法)
+         */
+        private List<CommandInfo> commonCommandInfos;
+        /**
+         * 要生成的指令信息(静态方法)
+         */
+        private List<CommandInfo> staticCommandInfos;
+
+        @Data
+        @Accessors(chain = true)
+        @ToString
+        public static class CommandInfo{
+            /**
+             * 指令类名
+             */
+            private String commandClassName;
+            /**
+             * 方法名称
+             */
+            private String methodName;
+            /**
+             * 返回值名称
+             */
+            private String returnTypeName;
+            /**
+             * 形式参数集合
+             */
+            private List<String> formalParams;
+            /**
+             * 实际参数集合
+             */
+            private List<String> actualParams;
+            /**
+             * 需要导入的类
+             */
+            private Set<String> imports;
+            /**
+             * 是否是静态方法
+             */
+            private boolean isStatic;
+            /**
+             * 命令本身
+             */
+            private Command command;
+        }
+    }
+
+
+    public static class ParamHandle{
+        //重复名称处理
+        private Map<String,Integer> cache = new HashMap<>();
+
+        /**
+         * 对参数名称进行重复处理
+         * @param paramName
+         * @return
+         */
+        public String handle(String paramName){
+            //全部生成小驼峰命名
+            //处理参数中包含特殊字符（-，/）
+            if(paramName.contains("-")){
+                paramName = paramName.substring(0,paramName.indexOf("-"));
+            }else if(paramName.contains("/")){
+                paramName = paramName.substring(0,paramName.indexOf("/"));
+            }else if(paramName.contains(" ")){
+                paramName = paramName.replace(" ","_");
+            }
+            String str = CaseUtil.smallCamelCase(paramName);
+            if(cache.containsKey(str)) {
+                cache.computeIfPresent(str, (key, val) -> val + 1);
+            }else{
+                cache.put(str, 1);
+            }
+            Integer index = cache.get(str);
+            return String.format("%s%s",str,index == 1 ? "" : index);
         }
     }
 }

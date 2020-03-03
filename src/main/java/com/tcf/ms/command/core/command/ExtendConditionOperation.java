@@ -1,6 +1,6 @@
 package com.tcf.ms.command.core.command;
 
-import com.tcf.ms.command.core.Conditable;
+import com.tcf.ms.command.Conditable;
 import com.tcf.ms.command.core.base.var.Variable;
 
 public interface ExtendConditionOperation extends ConditionOperation {

@@ -2,7 +2,7 @@ package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
-import com.tcf.ms.command.core.Conditable;
+import com.tcf.ms.command.Conditable;
 
 /**
  *   (class_is_listening_order, <team_no>, <sub_class>),

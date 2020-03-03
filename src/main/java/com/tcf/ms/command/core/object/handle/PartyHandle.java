@@ -100,7 +100,7 @@ import com.tcf.ms.command.core.operation.StoreRandomPartyOfTemplate;
 import com.tcf.ms.command.core.operation.SpawnAroundParty;
 import com.tcf.ms.command.core.object.ParticleSystem;
 import com.tcf.ms.command.core.operation.PartyDetach;
-import com.tcf.ms.command.core.Conditable;
+import com.tcf.ms.command.Conditable;
 import com.tcf.ms.command.core.operation.GetPartyAiBehavior;
 import com.tcf.ms.command.core.operation.StoreDistanceToPartyFromParty;
 import com.tcf.ms.command.core.operation.PartyGetCurrentTerrain;

@@ -14,6 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+@Deprecated
 public class GeneratorOperationUtil {
 
     private Logger logger = Logger.getLogger(GeneratorOperationUtil.class);

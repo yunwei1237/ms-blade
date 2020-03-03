@@ -2,7 +2,7 @@ package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
-import com.tcf.ms.command.core.Conditable;
+import com.tcf.ms.command.Conditable;
 
 /**
  *   (map_get_land_position_around_position,<dest_position_no>,<source_position_no>,<radius>),

@@ -3,7 +3,7 @@ package com.tcf.ms.command.core.object.handle.slot;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.OperationWithResult;
 import com.tcf.ms.command.core.CanVariable;
-import com.tcf.ms.command.core.Conditable;
+import com.tcf.ms.command.Conditable;
 
 /**
  * slot的抽象操作

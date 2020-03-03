@@ -1,7 +1,7 @@
 package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
-import com.tcf.ms.command.core.Conditable;
+import com.tcf.ms.command.Conditable;
 
 /**
  *   (neg|<operation>),

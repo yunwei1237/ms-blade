@@ -8,14 +8,16 @@ import com.tcf.ms.command.core.base.var.Variable;
  */
 public class AgentSetSpeedLimit implements Operation{
 
-    
+    private Variable agentId;
+    private Variable speedLimit;
 
-    public AgentSetSpeedLimit() {
-             
+    public AgentSetSpeedLimit(Variable agentId,Variable speedLimit) {
+        this.agentId = agentId;
+        this.speedLimit = speedLimit;     
     }
 
     @Override
     public String toScriptString() {
-        return String.format("(agent_set_speed_limit),");
+        return String.format("(agent_set_speed_limit,%s,%s),",agentId,speedLimit);
     }
 }

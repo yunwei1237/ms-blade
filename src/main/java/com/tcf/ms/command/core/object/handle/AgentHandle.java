@@ -20,7 +20,7 @@ import com.tcf.ms.command.core.operation.AgentIsAlly;
 import com.tcf.ms.command.core.operation.AgentGetSlot;
 import com.tcf.ms.command.core.operation.MissionCamClearTargetAgent;
 import com.tcf.ms.command.core.operation.AgentHasItemEquipped;
-import com.tcf.ms.command.core.Conditable;
+import com.tcf.ms.command.Conditable;
 import com.tcf.ms.command.core.operation.AgentRefillAmmo;
 import com.tcf.ms.command.core.operation.AgentGetTeam;
 import com.tcf.ms.command.core.operation.AgentSetWalkForwardAnimation;
@@ -228,13 +228,6 @@ public class AgentHandle {
         return new AgentGetPosition(positionNo,this.variable);
     }
 
-    /**
-     *   (agent_set_speed_limit,<agent_id>,<speed_limit(kilometers/hour)>),  Affects AI only 
-     * @return
-     */
-    public static Operation agentSetSpeedLimit(){
-        return new AgentSetSpeedLimit();
-    }
 
     /**
      *   (agent_get_ammo,<destination>,<agent_id>),

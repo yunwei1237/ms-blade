@@ -50,6 +50,11 @@ public class GeneratorCommandMethodUtilTest {
 
     @Test
     public void generatorHandle(){
-        util.exportHandle("src\\main\\java\\com\\tcf\\ms\\command\\core\\object\\handle");
+        util.exportHandle("src\\main\\java\\com\\tcf\\ms\\test");
+    }
+
+    @Test
+    public void generatorHandle2(){
+        //util.exportHandle("src\\main\\java\\com\\tcf\\ms\\command\\core\\object\\handle");
     }
 }

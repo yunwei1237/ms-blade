@@ -2,7 +2,7 @@ package com.tcf.ms.command.core.operation;
 
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.core.base.var.Variable;
-import com.tcf.ms.command.core.Conditable;
+import com.tcf.ms.command.Conditable;
 
 /**
  *   fails if the game key is not currently down (key_is_down, <game_key_id>),

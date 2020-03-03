@@ -3,13 +3,10 @@ package com.tcf.ms.command.core.object.handle.slot;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.OperationWithResult;
 import com.tcf.ms.command.core.CanVariable;
-import com.tcf.ms.command.core.Conditable;
+import com.tcf.ms.command.Conditable;
 import com.tcf.ms.command.core.base.Context;
 import com.tcf.ms.command.core.base.var.StringVariable;
 import com.tcf.ms.command.core.base.var.Variable;
-import com.tcf.ms.command.core.command.ScriptSpan;
-import com.tcf.ms.command.core.object.Party;
-import com.tcf.ms.command.core.object.Troop;
 import com.tcf.ms.command.core.operation.*;
 
 public class TroopSlot extends AbstractSlotOperation {

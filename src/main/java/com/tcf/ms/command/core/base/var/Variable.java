@@ -58,4 +58,41 @@ public abstract class Variable implements Operation, CanVariable {
     public static ConstantVariable constant(String varName){
         return  new ConstantVariable(varName);
     }
+
+    /**
+     * 寄存器
+     * @param varNo
+     * @return
+     */
+    public static RegVariable reg(int varNo){
+        return  new RegVariable(varNo);
+    }
+
+    /**
+     * 字符串寄存器
+     * @param varNo
+     * @return
+     */
+    public static SregVariable sreg(int varNo){
+        return  new SregVariable(varNo);
+    }
+
+    /**
+     * 位置变量
+     * @param varNo
+     * @return
+     */
+    public static PosVariable pos(int varNo){
+        return  new PosVariable(varNo);
+    }
+
+    /**
+     * 字符串变量
+     * @param format
+     * @param args
+     * @return
+     */
+    public static TextVariable str(String format,Variable...args){
+        return  new TextVariable(format,args);
+    }
 }

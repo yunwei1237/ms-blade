@@ -3,19 +3,13 @@ package com.tcf.ms.command.core.object.handle.slot;
 import com.tcf.ms.command.Operation;
 import com.tcf.ms.command.OperationWithResult;
 import com.tcf.ms.command.core.CanVariable;
-import com.tcf.ms.command.core.Conditable;
 import com.tcf.ms.command.core.base.BladeException;
 import com.tcf.ms.command.core.base.OperationResult;
 import com.tcf.ms.command.core.base.var.StringVariable;
 import com.tcf.ms.command.core.base.var.Variable;
-import com.tcf.ms.command.core.command.ScriptSpan;
-import com.tcf.ms.command.core.operation.FactionGetSlot;
-import com.tcf.ms.command.core.operation.FactionSetSlot;
-import com.tcf.ms.command.core.operation.FactionSlotEq;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 

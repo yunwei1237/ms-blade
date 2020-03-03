@@ -71,7 +71,7 @@ import com.tcf.ms.command.core.operation.TroopSetAutoEquip;
 import com.tcf.ms.command.core.operation.StoreRandomTroopToRaise;
 import com.tcf.ms.command.core.operation.TroopClearInventory;
 import com.tcf.ms.command.core.object.ItemType;
-import com.tcf.ms.command.core.Conditable;
+import com.tcf.ms.command.Conditable;
 import com.tcf.ms.command.core.operation.TroopInventorySlotGetItemAmount;
 import com.tcf.ms.command.core.operation.CurTableauAddTroop;
 import com.tcf.ms.command.core.operation.StrStoreTroopNameByCount;

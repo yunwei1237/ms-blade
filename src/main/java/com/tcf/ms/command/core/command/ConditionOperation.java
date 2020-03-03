@@ -2,10 +2,9 @@ package com.tcf.ms.command.core.command;
 
 
 import com.tcf.ms.command.Operation;
-import com.tcf.ms.command.core.Conditable;
+import com.tcf.ms.command.Conditable;
 import com.tcf.ms.command.core.base.var.Variable;
 
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
