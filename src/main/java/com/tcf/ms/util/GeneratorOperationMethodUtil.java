@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.io.File;
@@ -16,6 +17,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
+ * 读取和解析 operations.py文件
  * 此生成器，只针对 1.010版本，也就是原版脚本
  */
 @Slf4j
@@ -192,7 +194,9 @@ public class GeneratorOperationMethodUtil {
                                                     //去掉两边的中括号，然后保存参数名称
                                                     param.setParamName(item.substring(1, item.length() - 1));
                                                 }
+                                                param.setOption(true);
                                             } else {
+                                                //没有使用尖括号和方括号将参数包裹的
                                                 param.setParamName(item);
                                             }
                                             paramList.add(param);
@@ -388,6 +392,41 @@ public class GeneratorOperationMethodUtil {
             System.out.println("当前操作类型为：" + type);
             list.forEach(System.out::println);
         });
+    }
+
+
+    /**
+     * 获得全部指令的详情以markdown的方式
+     */
+    public String getAllOperationInfoInMarkDown(){
+        Map<String, Command> operations = getOperations(FileUtil.readLines(this.operationFile, "GBK"));
+        Map<String, List<String>> operationCollection = getOperationCollection(FileUtil.readString(this.operationFile, "GBK"));
+        List<Command> commands = operations.values().stream().sorted((comand1,command2)->comand1.operationName.compareTo(command2.operationName)).collect(Collectors.toList());
+        StringBuffer result = new StringBuffer();
+        result.append("# 操作指令手册\n");
+        result.append("当前操作指令的数量："+operations.size() + "\n");
+        result.append("## 操作指令" + "\n");
+        commands.forEach(oper-> {
+            result.append("### " + oper.operationName + "\n");
+            result.append("#### 名称\n" + oper.operationName + "\n");
+            result.append("#### 状态\n"+(oper.isDeleted ? "已删除":"可使用") + "\n");
+            result.append("#### 推荐\n"+(oper.isDeprecated ? "否":"是") + "\n");
+            result.append("#### 语法\n" + StringEscapeUtils.escapeHtml(oper.grammar) + "\n");
+            result.append("#### 指令参数集合" + "\n");
+            oper.getParams().forEach(param -> result.append(String.format("- 参数名：%s(%s)" + "\n",param.getParamName(),param.isOption()?"可选":"必选" )));
+            result.append("#### 系统简介\n" + StringEscapeUtils.escapeHtml(oper.note) + "\n");
+            result.append("#### 指令说明\n" + "\n");
+            result.append("请使用5号标题书写");
+            result.append("#### 使用案例\n" + "\n");
+            result.append("请使用5号标题书写");
+        });
+        result.append("--- " + "\n");
+        result.append("## 操作指令集合" + "\n");
+        operationCollection.forEach((type,list)->{
+            result.append("### " + type + "\n");
+            list.forEach(name->result.append("- "+name + "\n"));
+        });
+        return result.toString();
     }
 
     /**

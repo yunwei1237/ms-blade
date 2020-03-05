@@ -10763,7 +10763,8 @@ scripts = [
   # script_diplomacy_start_war_between_kingdoms
   # Input: arg1 = kingdom_1, arg2 = kingdom_2, arg3 = initializing_war_peace_cond
   # Output: none
-  ("diplomacy_start_war_between_kingdoms", #sets relations between two kingdoms and their vassals.
+  #sets relations between two kingdoms and their vassals.
+  ("diplomacy_start_war_between_kingdoms",
     [
       (store_script_param, ":kingdom_a", 1),
       (store_script_param, ":kingdom_b", 2),
@@ -10973,7 +10974,8 @@ scripts = [
   # script_diplomacy_start_peace_between_kingdoms
   # Input: arg1 = kingdom_1, arg2 = kingdom_2, arg3 = initializing_war_peace_cond
   # Output: none
-  ("diplomacy_start_peace_between_kingdoms", #sets relations between two kingdoms
+  #sets relations between two kingdoms
+  ("diplomacy_start_peace_between_kingdoms",
     [
       (store_script_param, ":kingdom_a", 1),
       (store_script_param, ":kingdom_b", 2),
@@ -14998,7 +15000,8 @@ scripts = [
   # script_update_order_panel_statistics_and_map
   # Input: none
   # Output: none
-  ("update_order_panel_statistics_and_map", #TODO: Call this in every battle mission template, once per second
+  #TODO: Call this in every battle mission template, once per second
+  ("update_order_panel_statistics_and_map",
    [(set_fixed_point_multiplier, 1000),
     (assign, ":num_us_ready_infantry", 0),
     (assign, ":num_us_ready_archers", 0),

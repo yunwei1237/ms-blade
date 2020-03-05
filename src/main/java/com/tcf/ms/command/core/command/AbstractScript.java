@@ -74,8 +74,6 @@ public abstract class AbstractScript implements OperationExecutable {
             }
     }
 
-
-
     protected List<Operation> getOperations(){
         return this.operations;
     }

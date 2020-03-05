@@ -2,6 +2,7 @@ package com.tcf.ms.command.core;
 
 import com.tcf.ms.command.core.base.var.Variable;
 
+@Deprecated
 public class Operations {
 
     public static String itemGetSlot(Variable destination,Variable itemId,Variable slotNo){

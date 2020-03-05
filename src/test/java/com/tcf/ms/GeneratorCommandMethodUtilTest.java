@@ -1,7 +1,12 @@
 package com.tcf.ms;
 
+import cn.hutool.core.io.FileUtil;
 import com.tcf.ms.util.GeneratorOperationMethodUtil;
+import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
+
+import java.io.File;
 
 /**
  *
@@ -12,6 +17,13 @@ public class GeneratorCommandMethodUtilTest {
     @Test
     public void test(){
         util.printAllOperationInfo();
+    }
+
+    @Test
+    public void getAllOperationInfo(){
+        String text = util.getAllOperationInfoInMarkDown();
+        File file = new File("E:/projects/ms-blade/操作手册.md");
+        FileUtil.writeString(text,file,"UTF-8");
     }
 
     @Test
@@ -57,4 +69,25 @@ public class GeneratorCommandMethodUtilTest {
     public void generatorHandle2(){
         //util.exportHandle("src\\main\\java\\com\\tcf\\ms\\command\\core\\object\\handle");
     }
+
+
+    @Test
+    public void getAllOperationInfo2(){
+        String text = new GeneratorOperationMethodUtil("E:\\projects\\prosperous-empire\\src\\header_operations.py").getAllOperationInfoInMarkDown();
+        File file = new File("E:\\projects\\prosperous-empire\\操作手册.md");
+        FileUtil.writeString(text,file,"UTF-8");
+    }
+
+
+    @Test
+    public void turnFile(){
+        File dir = new File("E:\\projects\\prosperous-empire\\src");
+        String[] list = dir.list();
+        for (String s : list) {
+            File file = new File(dir,s);
+            System.out.println(file.toString());
+            FileUtil.writeString(FileUtil.readString(file,"GBK"),file,"UTF-8");
+        }
+    }
+
 }
